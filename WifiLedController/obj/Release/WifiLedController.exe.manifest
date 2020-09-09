@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WifiLedController.exe" size="371648">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WifiLedController.exe" size="373696">
       <assemblyIdentity name="WifiLedController" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0j4rorMBi7iYi1jLX98kx450TJbe0X232QD4GgiiX+8=</dsig:DigestValue>
+        <dsig:DigestValue>dWLqW/rhJNe13bmat4pMze1cEPptt3UAb0gmNrerQD0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

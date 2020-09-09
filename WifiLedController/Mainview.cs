@@ -17,7 +17,7 @@ namespace WifiLedController
 
         private static int multicastPort = 48899;
         private UdpClient receive = new UdpClient(multicastPort);
-        private static string requestString = "HF-A11ASSISTHREAD";//String required to get led controllers to answer.
+        private static string requestString = "HF-A11ASSISTHREAD"; //String required to get led controllers to answer.
         private List<WifiLed> foundLeds = new List<WifiLed>();
         private List<WifiLed> activeLeds = new List<WifiLed>();
         private WifiLed selectedLed = null;
@@ -43,9 +43,9 @@ namespace WifiLedController
         private void SetupAmbianceColorTuningSettings()
         {
             (float red, float green, float blue, string mode) = xmlSettings.ReadAmbianceColorTuningSettings();
-            numericUpDownSettingsRed.Value = (decimal)red;
-            numericUpDownSettingsGreen.Value = (decimal)green;
-            numericUpDownSettingsBlue.Value = (decimal)blue;
+            numericUpDownSettingsRed.Value = (decimal) red;
+            numericUpDownSettingsGreen.Value = (decimal) green;
+            numericUpDownSettingsBlue.Value = (decimal) blue;
             if (mode.Equals("Multiplier"))
             {
                 ambianceMult = true;
@@ -58,14 +58,15 @@ namespace WifiLedController
 
         private void SetupAmbianceSettings()
         {
-            (int X, int Xwidth, int Xstride, int Y, int Yheight, int Ystride, float updateRate, bool limitActive, bool limitRateSwitch) = xmlSettings.ReadAmbianceSettings();
+            (int X, int Xwidth, int Xstride, int Y, int Yheight, int Ystride, float updateRate, bool limitActive,
+                bool limitRateSwitch) = xmlSettings.ReadAmbianceSettings();
             numericUpDownAdvancedX.Value = X;
             numericUpDownAdvancedXwidth.Value = Xwidth;
             numericUpDownAdvancedXstride.Value = Xstride;
             numericUpDownAdvancedY.Value = Y;
             numericUpDownAdvancedYheight.Value = Yheight;
             numericUpDownAdvancedYstride.Value = Ystride;
-            numericUpDownAdvancedUpdateNumber.Value = (decimal)updateRate;
+            numericUpDownAdvancedUpdateNumber.Value = (decimal) updateRate;
             if (limitActive)
             {
                 checkBoxAdvancedLimiterActive.Checked = true;
@@ -76,6 +77,7 @@ namespace WifiLedController
                 checkBoxAdvancedLimiterActive.Checked = false;
                 LimiterActive = false;
             }
+
             if (limitRateSwitch)
             {
                 buttonAdvancedLimiterRateSwitch.Text = "Seconds/Update";
@@ -141,15 +143,17 @@ namespace WifiLedController
             string[] data = device.Split(',');
 
             if (data.Length == 3)
-            {//A string we are interested in contains three parts
-                IPAddress iP = IPAddress.Parse(data[0]);//We only care about the first part, which is an ip
-                                                        //iPAddresses.Add(iP);//Yay sets!
+            {
+                //A string we are interested in contains three parts
+                IPAddress iP = IPAddress.Parse(data[0]); //We only care about the first part, which is an ip
+                //iPAddresses.Add(iP);//Yay sets!
 
                 WifiLed led = new WifiLed(iP, data[1]);
                 //New Led found
                 if (!foundLeds.Contains(led))
                 {
-                    Debug.WriteLine("Found new a device at: " + data[0] + "| contained in foundLeds: " + foundLeds.Contains(led));
+                    Debug.WriteLine("Found new a device at: " + data[0] + "| contained in foundLeds: " +
+                                    foundLeds.Contains(led));
                     foundLeds.Add(led);
                     //checkedListBoxDevices.Items.Add(led);
                     //this.Invoke((MethodInvoker)(() => OutputBox.Items.Add(engineOutput)));
@@ -162,13 +166,17 @@ namespace WifiLedController
                         led.name = custom;
                     }
 
-                    this.Invoke((MethodInvoker)(() => checkedListBoxDevices.Items.Add(led)));
+                    this.Invoke((MethodInvoker) (() => checkedListBoxDevices.Items.Add(led)));
                     if (checkedListBoxDevices.Items.Count == 1)
-                    {//first item is selected. so that we have something to work with, supress event
-                        this.checkedListBoxDevices.SelectedValueChanged -= new EventHandler(checkedListBoxDevices_SelectedIndexChanged);
-                        this.Invoke((MethodInvoker)(() => checkedListBoxDevices.SetSelected(0, true)));
-                        this.checkedListBoxDevices.SelectedValueChanged += new EventHandler(checkedListBoxDevices_SelectedIndexChanged);
+                    {
+                        //first item is selected. so that we have something to work with, supress event
+                        this.checkedListBoxDevices.SelectedValueChanged -=
+                            new EventHandler(checkedListBoxDevices_SelectedIndexChanged);
+                        this.Invoke((MethodInvoker) (() => checkedListBoxDevices.SetSelected(0, true)));
+                        this.checkedListBoxDevices.SelectedValueChanged +=
+                            new EventHandler(checkedListBoxDevices_SelectedIndexChanged);
                     }
+
                     //add event listener for this led
                     led.WifiLedUpdated += WifiLedUpdatedListener;
 
@@ -230,19 +238,22 @@ namespace WifiLedController
         {
             if (activeLeds.Count < 1 && selectedLed != null)
             {
-                selectedLed.UpdateRGBWW((byte)numericUpDownRed.Value, (byte)numericUpDownGreen.Value, (byte)numericUpDownBlue.Value, (byte)numericUpDownWarmWhite.Value);
+                selectedLed.UpdateRGBWW((byte) numericUpDownRed.Value, (byte) numericUpDownGreen.Value,
+                    (byte) numericUpDownBlue.Value, (byte) numericUpDownWarmWhite.Value);
             }
             else
             {
                 foreach (WifiLed led in activeLeds)
                 {
-                    led.UpdateRGBWW((byte)numericUpDownRed.Value, (byte)numericUpDownGreen.Value, (byte)numericUpDownBlue.Value, (byte)numericUpDownWarmWhite.Value);
+                    led.UpdateRGBWW((byte) numericUpDownRed.Value, (byte) numericUpDownGreen.Value,
+                        (byte) numericUpDownBlue.Value, (byte) numericUpDownWarmWhite.Value);
                 }
             }
         }
 
         private void updateView()
-        {//Passively update all element to match selected element
+        {
+            //Passively update all element to match selected element
             //Temporary removal of eventhandlers to supress accidental changes or colour changes
             this.numericUpDownRed.ValueChanged -= new EventHandler(this.numericUpDownRed_ValueChanged);
             this.numericUpDownGreen.ValueChanged -= new EventHandler(this.numericUpDownGreen_ValueChanged);
@@ -277,7 +288,8 @@ namespace WifiLedController
             if (activeLeds.Count < 1 || activeLeds.Contains(selectedLed))
             {
                 if (selectedLed.Active)
-                {//set on off buttons correctly
+                {
+                    //set on off buttons correctly
                     buttonOn.Enabled = false;
                     buttonOff.Enabled = true;
                 }
@@ -304,8 +316,10 @@ namespace WifiLedController
         }
 
         private void controlsToggler()
-        {//If working in in single mode or device is in the active list
-            if ((checkedListBoxDevices.CheckedItems.Count < 1) || checkedListBoxDevices.CheckedItems.Contains(selectedLed))
+        {
+            //If working in in single mode or device is in the active list
+            if ((checkedListBoxDevices.CheckedItems.Count < 1) ||
+                checkedListBoxDevices.CheckedItems.Contains(selectedLed))
             {
                 pictureBox1.Enabled = true;
                 numericUpDownRed.Enabled = true;
@@ -347,7 +361,7 @@ namespace WifiLedController
             this.redBar.Scroll -= new EventHandler(this.redBar_Scroll);
 
             //Set red
-            pictureBox1.BackColor = Color.FromArgb(red, (int)numericUpDownGreen.Value, (int)numericUpDownBlue.Value);
+            pictureBox1.BackColor = Color.FromArgb(red, (int) numericUpDownGreen.Value, (int) numericUpDownBlue.Value);
             numericUpDownRed.Value = red;
             redBar.Value = red;
             //set handlers back up
@@ -360,7 +374,7 @@ namespace WifiLedController
             this.numericUpDownGreen.ValueChanged -= new EventHandler(this.numericUpDownGreen_ValueChanged);
             this.greenBar.Scroll -= new EventHandler(this.greenBar_Scroll);
 
-            pictureBox1.BackColor = Color.FromArgb((int)numericUpDownRed.Value, green, (int)numericUpDownBlue.Value);
+            pictureBox1.BackColor = Color.FromArgb((int) numericUpDownRed.Value, green, (int) numericUpDownBlue.Value);
             numericUpDownGreen.Value = green;
             greenBar.Value = green;
             //set handlers back up
@@ -374,7 +388,7 @@ namespace WifiLedController
             this.numericUpDownBlue.ValueChanged -= new EventHandler(this.numericUpDownBlue_ValueChanged);
             this.blueBar.Scroll -= new EventHandler(this.blueBar_Scroll);
 
-            pictureBox1.BackColor = Color.FromArgb((int)numericUpDownRed.Value, (int)numericUpDownGreen.Value, blue);
+            pictureBox1.BackColor = Color.FromArgb((int) numericUpDownRed.Value, (int) numericUpDownGreen.Value, blue);
             numericUpDownBlue.Value = blue;
             blueBar.Value = blue;
 
@@ -399,13 +413,15 @@ namespace WifiLedController
         //Calculate the number of points that we actually check.
         private void updateCalculations()
         {
-            int xLines = (int)Math.Truncate(numericUpDownAdvancedXwidth.Value / numericUpDownAdvancedXstride.Value);
-            int ycolumns = (int)Math.Truncate(numericUpDownAdvancedYheight.Value / numericUpDownAdvancedYstride.Value);
+            int xLines = (int) Math.Truncate(numericUpDownAdvancedXwidth.Value / numericUpDownAdvancedXstride.Value);
+            int ycolumns = (int) Math.Truncate(numericUpDownAdvancedYheight.Value / numericUpDownAdvancedYstride.Value);
             int calculations = xLines * ycolumns;
             labelAdvancedCalcAmount.Text = calculations + " calculations required.";
-            xmlSettings.AddAmbianceSettings((int)numericUpDownAdvancedX.Value, (int)numericUpDownAdvancedXwidth.Value, (int)numericUpDownAdvancedXstride.Value,
-                (int)numericUpDownAdvancedY.Value, (int)numericUpDownAdvancedYheight.Value, (int)numericUpDownAdvancedYstride.Value,
-                (float)numericUpDownAdvancedUpdateNumber.Value, LimiterActive, LimiterUpdateRate);
+            xmlSettings.AddAmbianceSettings((int) numericUpDownAdvancedX.Value, (int) numericUpDownAdvancedXwidth.Value,
+                (int) numericUpDownAdvancedXstride.Value,
+                (int) numericUpDownAdvancedY.Value, (int) numericUpDownAdvancedYheight.Value,
+                (int) numericUpDownAdvancedYstride.Value,
+                (float) numericUpDownAdvancedUpdateNumber.Value, LimiterActive, LimiterUpdateRate);
         }
 
         #endregion functions
@@ -414,7 +430,7 @@ namespace WifiLedController
 
         private void WifiLedUpdatedListener(object sender, EventArgs e)
         {
-            if ((WifiLed)sender == selectedLed)
+            if ((WifiLed) sender == selectedLed)
             {
                 updateView();
             }
@@ -422,7 +438,7 @@ namespace WifiLedController
 
         private void numericUpDownRed_ValueChanged(object sender, EventArgs e)
         {
-            updateRed((int)numericUpDownRed.Value);
+            updateRed((int) numericUpDownRed.Value);
             updateActiveWifiLeds();
             //Debug.WriteLine("[Red_ValueChanged] Sender is " + sender.ToString());
         }
@@ -441,7 +457,7 @@ namespace WifiLedController
 
         private void numericUpDownGreen_ValueChanged(object sender, EventArgs e)
         {
-            updateGreen((int)numericUpDownGreen.Value);
+            updateGreen((int) numericUpDownGreen.Value);
             updateActiveWifiLeds();
         }
 
@@ -453,7 +469,7 @@ namespace WifiLedController
 
         private void numericUpDownBlue_ValueChanged(object sender, EventArgs e)
         {
-            updateBlue((int)numericUpDownBlue.Value);
+            updateBlue((int) numericUpDownBlue.Value);
             updateActiveWifiLeds();
         }
 
@@ -465,7 +481,7 @@ namespace WifiLedController
 
         private void numericUpDownWarmWhite_ValueChanged(object sender, EventArgs e)
         {
-            updateWarmWhite((int)numericUpDownWarmWhite.Value);
+            updateWarmWhite((int) numericUpDownWarmWhite.Value);
             updateActiveWifiLeds();
         }
 
@@ -484,6 +500,7 @@ namespace WifiLedController
                     Task.Factory.StartNew(() => led.TurnOn());
                 }
             }
+
             //switch which button is active
             buttonOff.Enabled = true;
             buttonOn.Enabled = false;
@@ -502,6 +519,7 @@ namespace WifiLedController
                     Task.Factory.StartNew(() => led.TurnOff());
                 }
             }
+
             buttonOff.Enabled = false;
             buttonOn.Enabled = true;
         }
@@ -511,7 +529,8 @@ namespace WifiLedController
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.BackColor = colorDialog1.Color;
-                updateViewColor(pictureBox1.BackColor.R, pictureBox1.BackColor.G, pictureBox1.BackColor.B, (byte)numericUpDownWarmWhite.Value);
+                updateViewColor(pictureBox1.BackColor.R, pictureBox1.BackColor.G, pictureBox1.BackColor.B,
+                    (byte) numericUpDownWarmWhite.Value);
                 updateActiveWifiLeds();
             }
         }
@@ -528,7 +547,7 @@ namespace WifiLedController
 
         private void checkedListBoxDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedLed = (WifiLed)checkedListBoxDevices.SelectedItem;
+            selectedLed = (WifiLed) checkedListBoxDevices.SelectedItem;
             updateView();
             /*
             Debug.WriteLine("Index===============================");
@@ -547,12 +566,14 @@ namespace WifiLedController
             //activeLeds.Clear();
             Debug.WriteLine(e.NewValue);
             if (e.NewValue == CheckState.Checked)
-            {//new check
-                activeLeds.Add((WifiLed)checkedListBoxDevices.Items[e.Index]);
+            {
+                //new check
+                activeLeds.Add((WifiLed) checkedListBoxDevices.Items[e.Index]);
             }
             else
-            {// uncheck
-                activeLeds.Remove((WifiLed)checkedListBoxDevices.Items[e.Index]);
+            {
+                // uncheck
+                activeLeds.Remove((WifiLed) checkedListBoxDevices.Items[e.Index]);
             }
 #if DEBUG
 
@@ -579,6 +600,7 @@ namespace WifiLedController
                 Debug.WriteLine("[buttonAddDummy_Click] custom = {0}", custom);
                 newDummy.name = custom;
             }
+
             DummyCount++;
             foundLeds.Add(newDummy);
             checkedListBoxDevices.Items.Add(newDummy, false);
@@ -586,8 +608,8 @@ namespace WifiLedController
 
         private void listBoxFunctions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisplayValuePair<string, byte> function = (DisplayValuePair<string, byte>)listBoxFunctions.SelectedItem;
-            byte speed = (byte)trackBarFunctionSpeed.Value;
+            DisplayValuePair<string, byte> function = (DisplayValuePair<string, byte>) listBoxFunctions.SelectedItem;
+            byte speed = (byte) trackBarFunctionSpeed.Value;
             if (activeLeds.Count < 1)
             {
                 selectedLed.UpdateFunction(function.Value, speed);
@@ -603,8 +625,8 @@ namespace WifiLedController
 
         private void trackBarFunctionSpeed_Scroll(object sender, EventArgs e)
         {
-            DisplayValuePair<string, byte> function = (DisplayValuePair<string, byte>)listBoxFunctions.SelectedItem;
-            byte speed = (byte)trackBarFunctionSpeed.Value;
+            DisplayValuePair<string, byte> function = (DisplayValuePair<string, byte>) listBoxFunctions.SelectedItem;
+            byte speed = (byte) trackBarFunctionSpeed.Value;
             if (activeLeds.Count < 1)
             {
                 selectedLed.UpdateFunction(function.Value, speed);
@@ -644,7 +666,7 @@ namespace WifiLedController
             }
         }
 
-        private void checkBoxAmbianceMode_CheckedChanged(object sender, EventArgs e)
+        public void checkBoxAmbianceMode_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxAmbianceMode.Checked)
             {
@@ -685,25 +707,26 @@ namespace WifiLedController
             Stopwatch functionTime = new Stopwatch();
             //Setup settings for local use to prevent crashing
             //Live updates crash the backgroundworker pretty reliably
-            int x = (int)numericUpDownAdvancedX.Value;
-            int y = (int)numericUpDownAdvancedY.Value;
-            int xWidth = (int)numericUpDownAdvancedXwidth.Value;
-            int yHeight = (int)numericUpDownAdvancedYheight.Value;
-            int xStride = (int)numericUpDownAdvancedXstride.Value;
-            int yStride = (int)numericUpDownAdvancedYstride.Value;
-            float red = (float)numericUpDownSettingsRed.Value;
-            float green = (float)numericUpDownSettingsGreen.Value;
-            float blue = (float)numericUpDownSettingsBlue.Value;
+            int x = (int) numericUpDownAdvancedX.Value;
+            int y = (int) numericUpDownAdvancedY.Value;
+            int xWidth = (int) numericUpDownAdvancedXwidth.Value;
+            int yHeight = (int) numericUpDownAdvancedYheight.Value;
+            int xStride = (int) numericUpDownAdvancedXstride.Value;
+            int yStride = (int) numericUpDownAdvancedYstride.Value;
+            float red = (float) numericUpDownSettingsRed.Value;
+            float green = (float) numericUpDownSettingsGreen.Value;
+            float blue = (float) numericUpDownSettingsBlue.Value;
 
-            bool limiterActive = LimiterActive;//Local copy so we do activate the limiter only one update
+            bool limiterActive = LimiterActive; //Local copy so we do activate the limiter only one update
             bool limiterRate = LimiterUpdateRate;
             decimal updateRate = numericUpDownAdvancedUpdateNumber.Value;
             if (!limiterRate)
             {
                 updateRate = (1.0m / numericUpDownAdvancedUpdateNumber.Value);
             }
-            updateRate *= 1000;//Convert seconds to milliseconds
-            this.Invoke((MethodInvoker)(() => buttonAdvancedUpdateSettings.Visible = true));
+
+            updateRate *= 1000; //Convert seconds to milliseconds
+            this.Invoke((MethodInvoker) (() => buttonAdvancedUpdateSettings.Visible = true));
             //crunch functions in the background
             while (ambiantMode || drawRectangle || mouseTracking)
             {
@@ -713,15 +736,15 @@ namespace WifiLedController
 
                 if (WorkerUpdateSettings)
                 {
-                    x = (int)numericUpDownAdvancedX.Value;
-                    y = (int)numericUpDownAdvancedY.Value;
-                    xWidth = (int)numericUpDownAdvancedXwidth.Value;
-                    yHeight = (int)numericUpDownAdvancedYheight.Value;
-                    xStride = (int)numericUpDownAdvancedXstride.Value;
-                    yStride = (int)numericUpDownAdvancedYstride.Value;
-                    red = (float)numericUpDownSettingsRed.Value;
-                    green = (float)numericUpDownSettingsGreen.Value;
-                    blue = (float)numericUpDownSettingsBlue.Value;
+                    x = (int) numericUpDownAdvancedX.Value;
+                    y = (int) numericUpDownAdvancedY.Value;
+                    xWidth = (int) numericUpDownAdvancedXwidth.Value;
+                    yHeight = (int) numericUpDownAdvancedYheight.Value;
+                    xStride = (int) numericUpDownAdvancedXstride.Value;
+                    yStride = (int) numericUpDownAdvancedYstride.Value;
+                    red = (float) numericUpDownSettingsRed.Value;
+                    green = (float) numericUpDownSettingsGreen.Value;
+                    blue = (float) numericUpDownSettingsBlue.Value;
 
                     limiterActive = LimiterActive;
                     limiterRate = LimiterUpdateRate;
@@ -730,40 +753,51 @@ namespace WifiLedController
                     {
                         updateRate = (1.0m / numericUpDownAdvancedUpdateNumber.Value);
                     }
-                    updateRate *= 1000;//Convert seconds to milliseconds
+
+                    updateRate *= 1000; //Convert seconds to milliseconds
                     WorkerUpdateSettings = false;
                 }
+
                 if (drawRectangle)
                 {
-                    gsrc.FillRectangle(brush, (float)numericUpDownAdvancedX.Value, (float)numericUpDownAdvancedY.Value,
-                        (float)numericUpDownAdvancedXwidth.Value, (float)numericUpDownAdvancedYheight.Value);
+                    gsrc.FillRectangle(brush, (float) numericUpDownAdvancedX.Value,
+                        (float) numericUpDownAdvancedY.Value,
+                        (float) numericUpDownAdvancedXwidth.Value, (float) numericUpDownAdvancedYheight.Value);
                 }
+
                 if (ambiantMode)
                 {
                     //need some validation of values, especially for the settings values.
                     if (ambianceMult)
                     {
-                        averageColor = sp.GetAverageColorSectionMulti(x, y, xWidth, yHeight, xStride, yStride, red, green, blue);
+                        averageColor = sp.GetAverageColorSectionMulti(x, y, xWidth, yHeight, xStride, yStride, red,
+                            green, blue);
                     }
                     else
                     {
-                        averageColor = sp.GetAverageColorSection(x, y, xWidth, yHeight, xStride, yStride, (int)red, (int)green, (int)blue);
+                        averageColor = sp.GetAverageColorSection(x, y, xWidth, yHeight, xStride, yStride, (int) red,
+                            (int) green, (int) blue);
                     }
 
-                    this.Invoke((MethodInvoker)(() => updateViewColor(averageColor.R, averageColor.G, averageColor.B, 0)));
-                    this.Invoke((MethodInvoker)(() => updateActiveWifiLeds()));
+                    this.Invoke((MethodInvoker) (() =>
+                        updateViewColor(averageColor.R, averageColor.G, averageColor.B, 0)));
+                    this.Invoke((MethodInvoker) (() => updateActiveWifiLeds()));
                 }
+
                 if (mouseTracking)
                 {
                     var pointer = sp.MouseLocPosColor();
                     pictureBoxAdvanced.BackColor = pointer.Item1;
 
-                    this.Invoke((MethodInvoker)(() => labelAdvancedCoordinates.Text = "Mouse at: X= " + pointer.Item2.X + " Y= " + pointer.Item2.Y));
+                    this.Invoke((MethodInvoker) (() =>
+                        labelAdvancedCoordinates.Text = "Mouse at: X= " + pointer.Item2.X + " Y= " + pointer.Item2.Y));
                 }
+
                 //Stop timer and report time spend in loop
                 functionTime.Stop();
 
-                this.Invoke((MethodInvoker)(() => labelAdvancedCalcTime.Text = "Calculation time is " + functionTime.ElapsedMilliseconds + "/" + Decimal.Round(updateRate, 2) + " ms."));
+                this.Invoke((MethodInvoker) (() => labelAdvancedCalcTime.Text = "Calculation time is " +
+                    functionTime.ElapsedMilliseconds + "/" + Decimal.Round(updateRate, 2) + " ms."));
                 //maybe add a sleep here.
                 if (limiterActive)
                 {
@@ -771,16 +805,20 @@ namespace WifiLedController
                     //if there is time remaining we need to wait
                     if (timeRemaining > 0)
                     {
-                        this.Invoke((MethodInvoker)(() => labelAdvancedCalcTime.ForeColor = SystemColors.ControlText));//reset colors as they may have been changed
-                        System.Threading.Thread.Sleep((int)timeRemaining);
+                        this.Invoke((MethodInvoker) (() =>
+                            labelAdvancedCalcTime.ForeColor =
+                                SystemColors.ControlText)); //reset colors as they may have been changed
+                        System.Threading.Thread.Sleep((int) timeRemaining);
                         Debug.WriteLine("[BackgroundWorker1] sleeping for " + timeRemaining + " ms.");
                     }
                     else
-                    {//if there is no time remaining we need some way to warn the user that the calculations cannot keep up
-                        this.Invoke((MethodInvoker)(() => labelAdvancedCalcTime.ForeColor = Color.Red));
+                    {
+                        //if there is no time remaining we need some way to warn the user that the calculations cannot keep up
+                        this.Invoke((MethodInvoker) (() => labelAdvancedCalcTime.ForeColor = Color.Red));
                     }
                 }
             }
+
             //properly clean up graphics.
             gsrc.Dispose();
             Debug.WriteLine("Ending background worker for now.");
@@ -854,6 +892,7 @@ namespace WifiLedController
                 Debug.WriteLine("[buttonAddDummy_Click] custom = {0}", custom);
                 newDummy.name = custom;
             }
+
             DummyCount++;
             foundLeds.Add(newDummy);
             checkedListBoxDevices.Items.Add(newDummy, false);
@@ -867,7 +906,8 @@ namespace WifiLedController
         private void button1_Click_2(object sender, EventArgs e)
         {
             if (ambianceMult)
-            {//swap ambiance toggle
+            {
+                //swap ambiance toggle
                 ambianceMult = false;
                 buttonSettingSwitch.Text = "Additive Active";
             }
@@ -876,6 +916,7 @@ namespace WifiLedController
                 ambianceMult = true;
                 buttonSettingSwitch.Text = "Multiplier Active";
             }
+
             decimal temp;
             //switch values
             temp = numericUpDownSettingsRed.Value;
@@ -891,16 +932,18 @@ namespace WifiLedController
             blueAmbiance = temp;
             if (ambianceMult)
             {
-                xmlSettings.AddAmbianceColorTuningSettings((float)numericUpDownSettingsRed.Value, (float)numericUpDownSettingsGreen.Value,
-                    (float)numericUpDownSettingsBlue.Value, "Multiplier");
+                xmlSettings.AddAmbianceColorTuningSettings((float) numericUpDownSettingsRed.Value,
+                    (float) numericUpDownSettingsGreen.Value,
+                    (float) numericUpDownSettingsBlue.Value, "Multiplier");
                 numericUpDownSettingsRed.DecimalPlaces = 2;
                 numericUpDownSettingsGreen.DecimalPlaces = 2;
                 numericUpDownSettingsBlue.DecimalPlaces = 2;
             }
             else
             {
-                xmlSettings.AddAmbianceColorTuningSettings((float)numericUpDownSettingsRed.Value, (float)numericUpDownSettingsGreen.Value,
-                    (float)numericUpDownSettingsBlue.Value, "Additive");
+                xmlSettings.AddAmbianceColorTuningSettings((float) numericUpDownSettingsRed.Value,
+                    (float) numericUpDownSettingsGreen.Value,
+                    (float) numericUpDownSettingsBlue.Value, "Additive");
                 numericUpDownSettingsRed.DecimalPlaces = 0;
                 numericUpDownSettingsGreen.DecimalPlaces = 0;
                 numericUpDownSettingsBlue.DecimalPlaces = 0;
@@ -926,13 +969,15 @@ namespace WifiLedController
         {
             if (ambianceMult)
             {
-                xmlSettings.AddAmbianceColorTuningSettings((float)numericUpDownSettingsRed.Value, (float)numericUpDownSettingsGreen.Value,
-                    (float)numericUpDownSettingsBlue.Value, "Multiplier");
+                xmlSettings.AddAmbianceColorTuningSettings((float) numericUpDownSettingsRed.Value,
+                    (float) numericUpDownSettingsGreen.Value,
+                    (float) numericUpDownSettingsBlue.Value, "Multiplier");
             }
             else
             {
-                xmlSettings.AddAmbianceColorTuningSettings((float)numericUpDownSettingsRed.Value, (float)numericUpDownSettingsGreen.Value,
-                    (float)numericUpDownSettingsBlue.Value, "Additive");
+                xmlSettings.AddAmbianceColorTuningSettings((float) numericUpDownSettingsRed.Value,
+                    (float) numericUpDownSettingsGreen.Value,
+                    (float) numericUpDownSettingsBlue.Value, "Additive");
             }
         }
 
@@ -991,6 +1036,80 @@ namespace WifiLedController
             Show();
             this.WindowState = FormWindowState.Normal;
             notifyIcon.Visible = false;
+        }
+
+        private void onToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (activeLeds.Count < 1 && selectedLed != null)
+            {
+                selectedLed.TurnOn();
+            }
+            else
+            {
+                foreach (WifiLed led in activeLeds)
+                {
+                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
+                    Task.Factory.StartNew(() => led.TurnOn());
+                }
+            }
+
+            //switch which button is active
+            buttonOff.Enabled = true;
+            buttonOn.Enabled = false;
+        }
+
+        private void offToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (activeLeds.Count < 1 && selectedLed != null)
+            {
+                selectedLed.TurnOff();
+            }
+            else
+            {
+                foreach (WifiLed led in activeLeds)
+                {
+                    Task.Factory.StartNew(() => led.TurnOff());
+                }
+            }
+
+            buttonOff.Enabled = false;
+            buttonOn.Enabled = true;
+        }
+
+        private void onToolStripMenuItemAmbience_Click(object sender, EventArgs e)
+        {
+            checkBoxAmbianceMode.Checked = true;
+
+            if (checkBoxAmbianceMode.Checked)
+            {
+                ambiantMode = true;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                ambiantMode = false;
+            }
+        }
+
+        private void offToolStripMenuItemAmbience_Click(object sender, EventArgs e)
+        {
+            checkBoxAmbianceMode.Checked = false;
+
+            if (checkBoxAmbianceMode.Checked)
+            {
+                ambiantMode = true;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 }

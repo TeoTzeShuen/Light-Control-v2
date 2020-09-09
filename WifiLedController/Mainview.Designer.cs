@@ -93,6 +93,13 @@
             this.blueBar = new System.Windows.Forms.TrackBar();
             this.tabControlDevice = new System.Windows.Forms.TabControl();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.powerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ambienceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsGreen)).BeginInit();
@@ -120,13 +127,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blueBar)).BeginInit();
             this.tabControlDevice.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkedListBoxDevices
             // 
             this.checkedListBoxDevices.FormattingEnabled = true;
             this.checkedListBoxDevices.Location = new System.Drawing.Point(13, 15);
-            this.checkedListBoxDevices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkedListBoxDevices.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBoxDevices.Name = "checkedListBoxDevices";
             this.checkedListBoxDevices.Size = new System.Drawing.Size(159, 242);
             this.checkedListBoxDevices.TabIndex = 12;
@@ -136,7 +144,7 @@
             // buttonRefreshList
             // 
             this.buttonRefreshList.Location = new System.Drawing.Point(13, 274);
-            this.buttonRefreshList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRefreshList.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRefreshList.Name = "buttonRefreshList";
             this.buttonRefreshList.Size = new System.Drawing.Size(156, 28);
             this.buttonRefreshList.TabIndex = 13;
@@ -162,9 +170,9 @@
             this.tabPage4.Controls.Add(this.buttonSettingsNameSave);
             this.tabPage4.Controls.Add(this.textBoxSettingsName);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(355, 295);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Settings";
@@ -173,7 +181,7 @@
             // buttonSettingSwitch
             // 
             this.buttonSettingSwitch.Location = new System.Drawing.Point(13, 134);
-            this.buttonSettingSwitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSettingSwitch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSettingSwitch.Name = "buttonSettingSwitch";
             this.buttonSettingSwitch.Size = new System.Drawing.Size(151, 28);
             this.buttonSettingSwitch.TabIndex = 9;
@@ -214,7 +222,7 @@
             // numericUpDownSettingsBlue
             // 
             this.numericUpDownSettingsBlue.Location = new System.Drawing.Point(69, 105);
-            this.numericUpDownSettingsBlue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownSettingsBlue.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownSettingsBlue.Name = "numericUpDownSettingsBlue";
             this.numericUpDownSettingsBlue.Size = new System.Drawing.Size(79, 22);
             this.numericUpDownSettingsBlue.TabIndex = 5;
@@ -223,7 +231,7 @@
             // numericUpDownSettingsGreen
             // 
             this.numericUpDownSettingsGreen.Location = new System.Drawing.Point(69, 73);
-            this.numericUpDownSettingsGreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownSettingsGreen.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownSettingsGreen.Maximum = new decimal(new int[] {
             255,
             0,
@@ -237,7 +245,7 @@
             // numericUpDownSettingsRed
             // 
             this.numericUpDownSettingsRed.Location = new System.Drawing.Point(69, 41);
-            this.numericUpDownSettingsRed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownSettingsRed.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownSettingsRed.Maximum = new decimal(new int[] {
             255,
             0,
@@ -251,7 +259,7 @@
             // buttonSettingsNameSave
             // 
             this.buttonSettingsNameSave.Location = new System.Drawing.Point(244, 7);
-            this.buttonSettingsNameSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSettingsNameSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSettingsNameSave.Name = "buttonSettingsNameSave";
             this.buttonSettingsNameSave.Size = new System.Drawing.Size(100, 28);
             this.buttonSettingsNameSave.TabIndex = 1;
@@ -262,7 +270,7 @@
             // textBoxSettingsName
             // 
             this.textBoxSettingsName.Location = new System.Drawing.Point(9, 9);
-            this.textBoxSettingsName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSettingsName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSettingsName.Name = "textBoxSettingsName";
             this.textBoxSettingsName.Size = new System.Drawing.Size(225, 22);
             this.textBoxSettingsName.TabIndex = 0;
@@ -273,9 +281,9 @@
             this.tabPage3.Controls.Add(this.groupBoxAdvanced);
             this.tabPage3.Controls.Add(this.checkBoxAmbianceMode);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(355, 295);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Advanced";
@@ -284,7 +292,7 @@
             // buttonAdvancedUpdateSettings
             // 
             this.buttonAdvancedUpdateSettings.Location = new System.Drawing.Point(181, 4);
-            this.buttonAdvancedUpdateSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAdvancedUpdateSettings.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAdvancedUpdateSettings.Name = "buttonAdvancedUpdateSettings";
             this.buttonAdvancedUpdateSettings.Size = new System.Drawing.Size(155, 28);
             this.buttonAdvancedUpdateSettings.TabIndex = 23;
@@ -318,9 +326,9 @@
             this.groupBoxAdvanced.Controls.Add(this.numericUpDownAdvancedX);
             this.groupBoxAdvanced.Controls.Add(this.labelAdvancedX);
             this.groupBoxAdvanced.Location = new System.Drawing.Point(5, 37);
-            this.groupBoxAdvanced.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxAdvanced.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxAdvanced.Name = "groupBoxAdvanced";
-            this.groupBoxAdvanced.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxAdvanced.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxAdvanced.Size = new System.Drawing.Size(339, 251);
             this.groupBoxAdvanced.TabIndex = 6;
             this.groupBoxAdvanced.TabStop = false;
@@ -329,7 +337,7 @@
             // buttonAdvancedLimiterRateSwitch
             // 
             this.buttonAdvancedLimiterRateSwitch.Location = new System.Drawing.Point(117, 139);
-            this.buttonAdvancedLimiterRateSwitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAdvancedLimiterRateSwitch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAdvancedLimiterRateSwitch.Name = "buttonAdvancedLimiterRateSwitch";
             this.buttonAdvancedLimiterRateSwitch.Size = new System.Drawing.Size(155, 28);
             this.buttonAdvancedLimiterRateSwitch.TabIndex = 22;
@@ -341,7 +349,7 @@
             // 
             this.numericUpDownAdvancedUpdateNumber.DecimalPlaces = 2;
             this.numericUpDownAdvancedUpdateNumber.Location = new System.Drawing.Point(36, 139);
-            this.numericUpDownAdvancedUpdateNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedUpdateNumber.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedUpdateNumber.Minimum = new decimal(new int[] {
             1,
             0,
@@ -362,7 +370,7 @@
             this.checkBoxAdvancedLimiterActive.Checked = true;
             this.checkBoxAdvancedLimiterActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAdvancedLimiterActive.Location = new System.Drawing.Point(8, 142);
-            this.checkBoxAdvancedLimiterActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxAdvancedLimiterActive.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAdvancedLimiterActive.Name = "checkBoxAdvancedLimiterActive";
             this.checkBoxAdvancedLimiterActive.Size = new System.Drawing.Size(15, 14);
             this.checkBoxAdvancedLimiterActive.TabIndex = 20;
@@ -393,7 +401,7 @@
             // 
             this.checkBoxMouseTracking.AutoSize = true;
             this.checkBoxMouseTracking.Location = new System.Drawing.Point(8, 175);
-            this.checkBoxMouseTracking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxMouseTracking.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxMouseTracking.Name = "checkBoxMouseTracking";
             this.checkBoxMouseTracking.Size = new System.Drawing.Size(124, 20);
             this.checkBoxMouseTracking.TabIndex = 17;
@@ -405,7 +413,7 @@
             // 
             this.checkBoxAdvancedShowRegion.AutoSize = true;
             this.checkBoxAdvancedShowRegion.Location = new System.Drawing.Point(185, 97);
-            this.checkBoxAdvancedShowRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxAdvancedShowRegion.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAdvancedShowRegion.Name = "checkBoxAdvancedShowRegion";
             this.checkBoxAdvancedShowRegion.Size = new System.Drawing.Size(107, 20);
             this.checkBoxAdvancedShowRegion.TabIndex = 16;
@@ -416,7 +424,7 @@
             // pictureBoxAdvanced
             // 
             this.pictureBoxAdvanced.Location = new System.Drawing.Point(205, 175);
-            this.pictureBoxAdvanced.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxAdvanced.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxAdvanced.Name = "pictureBoxAdvanced";
             this.pictureBoxAdvanced.Size = new System.Drawing.Size(125, 73);
             this.pictureBoxAdvanced.TabIndex = 2;
@@ -446,7 +454,7 @@
             // numericUpDownAdvancedYstride
             // 
             this.numericUpDownAdvancedYstride.Location = new System.Drawing.Point(205, 70);
-            this.numericUpDownAdvancedYstride.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedYstride.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedYstride.Maximum = new decimal(new int[] {
             32000,
             0,
@@ -470,7 +478,7 @@
             // numericUpDownAdvancedYheight
             // 
             this.numericUpDownAdvancedYheight.Location = new System.Drawing.Point(205, 43);
-            this.numericUpDownAdvancedYheight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedYheight.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedYheight.Maximum = new decimal(new int[] {
             32000,
             0,
@@ -509,7 +517,7 @@
             // numericUpDownAdvancedY
             // 
             this.numericUpDownAdvancedY.Location = new System.Drawing.Point(205, 17);
-            this.numericUpDownAdvancedY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedY.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedY.Maximum = new decimal(new int[] {
             32000,
             0,
@@ -543,7 +551,7 @@
             // numericUpDownAdvancedXstride
             // 
             this.numericUpDownAdvancedXstride.Location = new System.Drawing.Point(64, 70);
-            this.numericUpDownAdvancedXstride.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedXstride.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedXstride.Maximum = new decimal(new int[] {
             32000,
             0,
@@ -567,7 +575,7 @@
             // numericUpDownAdvancedXwidth
             // 
             this.numericUpDownAdvancedXwidth.Location = new System.Drawing.Point(64, 43);
-            this.numericUpDownAdvancedXwidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedXwidth.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedXwidth.Maximum = new decimal(new int[] {
             32000,
             0,
@@ -606,7 +614,7 @@
             // numericUpDownAdvancedX
             // 
             this.numericUpDownAdvancedX.Location = new System.Drawing.Point(64, 17);
-            this.numericUpDownAdvancedX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownAdvancedX.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownAdvancedX.Maximum = new decimal(new int[] {
             32000,
             0,
@@ -636,7 +644,7 @@
             // 
             this.checkBoxAmbianceMode.AutoSize = true;
             this.checkBoxAmbianceMode.Location = new System.Drawing.Point(9, 9);
-            this.checkBoxAmbianceMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxAmbianceMode.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAmbianceMode.Name = "checkBoxAmbianceMode";
             this.checkBoxAmbianceMode.Size = new System.Drawing.Size(126, 20);
             this.checkBoxAmbianceMode.TabIndex = 0;
@@ -650,9 +658,9 @@
             this.tabPage2.Controls.Add(this.trackBarFunctionSpeed);
             this.tabPage2.Controls.Add(this.listBoxFunctions);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(355, 295);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Functions";
@@ -674,7 +682,7 @@
             this.trackBarFunctionSpeed.AutoSize = false;
             this.trackBarFunctionSpeed.LargeChange = 50;
             this.trackBarFunctionSpeed.Location = new System.Drawing.Point(68, 5);
-            this.trackBarFunctionSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBarFunctionSpeed.Margin = new System.Windows.Forms.Padding(4);
             this.trackBarFunctionSpeed.Maximum = 100;
             this.trackBarFunctionSpeed.Name = "trackBarFunctionSpeed";
             this.trackBarFunctionSpeed.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -691,7 +699,7 @@
             this.listBoxFunctions.FormattingEnabled = true;
             this.listBoxFunctions.ItemHeight = 16;
             this.listBoxFunctions.Location = new System.Drawing.Point(9, 36);
-            this.listBoxFunctions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxFunctions.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxFunctions.Name = "listBoxFunctions";
             this.listBoxFunctions.Size = new System.Drawing.Size(333, 244);
             this.listBoxFunctions.TabIndex = 0;
@@ -716,9 +724,9 @@
             this.tabPage1.Controls.Add(this.numericUpDownRed);
             this.tabPage1.Controls.Add(this.blueBar);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(355, 295);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lights";
@@ -727,7 +735,7 @@
             // buttonOn
             // 
             this.buttonOn.Location = new System.Drawing.Point(8, 7);
-            this.buttonOn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOn.Name = "buttonOn";
             this.buttonOn.Size = new System.Drawing.Size(100, 28);
             this.buttonOn.TabIndex = 0;
@@ -738,7 +746,7 @@
             // buttonRefreshStatus
             // 
             this.buttonRefreshStatus.Location = new System.Drawing.Point(225, 5);
-            this.buttonRefreshStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRefreshStatus.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRefreshStatus.Name = "buttonRefreshStatus";
             this.buttonRefreshStatus.Size = new System.Drawing.Size(100, 28);
             this.buttonRefreshStatus.TabIndex = 17;
@@ -759,7 +767,7 @@
             // buttonOff
             // 
             this.buttonOff.Location = new System.Drawing.Point(116, 6);
-            this.buttonOff.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOff.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOff.Name = "buttonOff";
             this.buttonOff.Size = new System.Drawing.Size(100, 28);
             this.buttonOff.TabIndex = 1;
@@ -802,7 +810,7 @@
             this.redBar.BackColor = System.Drawing.SystemColors.Control;
             this.redBar.LargeChange = 20;
             this.redBar.Location = new System.Drawing.Point(8, 43);
-            this.redBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.redBar.Margin = new System.Windows.Forms.Padding(4);
             this.redBar.Maximum = 255;
             this.redBar.Name = "redBar";
             this.redBar.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -814,7 +822,7 @@
             // numericUpDownBlue
             // 
             this.numericUpDownBlue.Location = new System.Drawing.Point(144, 178);
-            this.numericUpDownBlue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownBlue.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownBlue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -828,7 +836,7 @@
             // numericUpDownWarmWhite
             // 
             this.numericUpDownWarmWhite.Location = new System.Drawing.Point(212, 178);
-            this.numericUpDownWarmWhite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownWarmWhite.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownWarmWhite.Maximum = new decimal(new int[] {
             255,
             0,
@@ -843,7 +851,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pictureBox1.Location = new System.Drawing.Point(8, 226);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(264, 62);
             this.pictureBox1.TabIndex = 11;
@@ -855,7 +863,7 @@
             this.greenBar.BackColor = System.Drawing.SystemColors.Control;
             this.greenBar.LargeChange = 20;
             this.greenBar.Location = new System.Drawing.Point(76, 43);
-            this.greenBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.greenBar.Margin = new System.Windows.Forms.Padding(4);
             this.greenBar.Maximum = 255;
             this.greenBar.Name = "greenBar";
             this.greenBar.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -867,7 +875,7 @@
             // numericUpDownGreen
             // 
             this.numericUpDownGreen.Location = new System.Drawing.Point(76, 178);
-            this.numericUpDownGreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownGreen.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownGreen.Maximum = new decimal(new int[] {
             255,
             0,
@@ -883,7 +891,7 @@
             this.trackBarWarmWhite.BackColor = System.Drawing.SystemColors.Control;
             this.trackBarWarmWhite.LargeChange = 20;
             this.trackBarWarmWhite.Location = new System.Drawing.Point(212, 43);
-            this.trackBarWarmWhite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBarWarmWhite.Margin = new System.Windows.Forms.Padding(4);
             this.trackBarWarmWhite.Maximum = 255;
             this.trackBarWarmWhite.Name = "trackBarWarmWhite";
             this.trackBarWarmWhite.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -895,7 +903,7 @@
             // numericUpDownRed
             // 
             this.numericUpDownRed.Location = new System.Drawing.Point(8, 178);
-            this.numericUpDownRed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDownRed.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownRed.Maximum = new decimal(new int[] {
             255,
             0,
@@ -911,7 +919,7 @@
             this.blueBar.BackColor = System.Drawing.SystemColors.Control;
             this.blueBar.LargeChange = 20;
             this.blueBar.Location = new System.Drawing.Point(144, 43);
-            this.blueBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.blueBar.Margin = new System.Windows.Forms.Padding(4);
             this.blueBar.Maximum = 255;
             this.blueBar.Name = "blueBar";
             this.blueBar.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -927,7 +935,7 @@
             this.tabControlDevice.Controls.Add(this.tabPage3);
             this.tabControlDevice.Controls.Add(this.tabPage4);
             this.tabControlDevice.Location = new System.Drawing.Point(181, 15);
-            this.tabControlDevice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControlDevice.Margin = new System.Windows.Forms.Padding(4);
             this.tabControlDevice.Name = "tabControlDevice";
             this.tabControlDevice.SelectedIndex = 0;
             this.tabControlDevice.Size = new System.Drawing.Size(363, 324);
@@ -935,9 +943,64 @@
             // 
             // notifyIcon
             // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "LED Control";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.powerToolStripMenuItem,
+            this.ambienceToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
+            // 
+            // powerToolStripMenuItem
+            // 
+            this.powerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onToolStripMenuItem,
+            this.offToolStripMenuItem});
+            this.powerToolStripMenuItem.Name = "powerToolStripMenuItem";
+            this.powerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.powerToolStripMenuItem.Text = "Power";
+            // 
+            // onToolStripMenuItem
+            // 
+            this.onToolStripMenuItem.Name = "onToolStripMenuItem";
+            this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
+            this.onToolStripMenuItem.Text = "On";
+            this.onToolStripMenuItem.Click += new System.EventHandler(this.onToolStripMenuItem_Click);
+            // 
+            // offToolStripMenuItem
+            // 
+            this.offToolStripMenuItem.Name = "offToolStripMenuItem";
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
+            this.offToolStripMenuItem.Text = "Off";
+            this.offToolStripMenuItem.Click += new System.EventHandler(this.offToolStripMenuItem_Click);
+            // 
+            // ambienceToolStripMenuItem
+            // 
+            this.ambienceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onToolStripMenuItemAmbience,
+            this.offToolStripMenuItemAmbience});
+            this.ambienceToolStripMenuItem.Name = "ambienceToolStripMenuItem";
+            this.ambienceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ambienceToolStripMenuItem.Text = "Ambience";
+            // 
+            // onToolStripMenuItemAmbience
+            // 
+            this.onToolStripMenuItemAmbience.Name = "onToolStripMenuItemAmbience";
+            this.onToolStripMenuItemAmbience.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItemAmbience.Text = "On";
+            this.onToolStripMenuItemAmbience.Click += new System.EventHandler(this.onToolStripMenuItemAmbience_Click);
+            // 
+            // offToolStripMenuItemAmbience
+            // 
+            this.offToolStripMenuItemAmbience.Name = "offToolStripMenuItemAmbience";
+            this.offToolStripMenuItemAmbience.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItemAmbience.Text = "Off";
+            this.offToolStripMenuItemAmbience.Click += new System.EventHandler(this.offToolStripMenuItemAmbience_Click);
             // 
             // Mainview
             // 
@@ -949,7 +1012,7 @@
             this.Controls.Add(this.checkedListBoxDevices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Mainview";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -988,6 +1051,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blueBar)).EndInit();
             this.tabControlDevice.ResumeLayout(false);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1059,6 +1123,13 @@
         private System.Windows.Forms.CheckBox checkBoxAdvancedLimiterActive;
         private System.Windows.Forms.Button buttonAdvancedUpdateSettings;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem powerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem onToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ambienceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem onToolStripMenuItemAmbience;
+        private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItemAmbience;
     }
 }
 

@@ -11,4 +11,8 @@
     <LimiterActive>True</LimiterActive>
     <LimiterSecondsUpdate>False</LimiterSecondsUpdate>
   </AmbianceSettings>
+  <CustomName>
+    <MacAddress>C82E475FB14D</MacAddress>
+    <Name>Table</Name>
+  </CustomName>
 </Settings>
