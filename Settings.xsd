@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Settings"/>
+  <xs:element name="CustomName" type="MacAddressNamePair"/>
+  <xs:complexType name="MacAddressNamePair">
+    <xs:sequence>
+      <xs:element name="MacAddress" type="xs:string"/>
+      <xs:element name="Name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AmbianceSettings" type="AmbianceSettingsValues"/>
+  <xs:complexType name="AmbianceSettingsValues">
+    <xs:sequence>
+      <xs:element name="X" type="xs:int"/>
+      <xs:element name="Xwidth" type="xs:int"/>
+      <xs:element name="Xstride" type="xs:int"/>
+      <xs:element name="Y" type="xs:int"/>
+      <xs:element name="Yheight" type="xs:int"/>
+      <xs:element name="Ystride" type="xs:int"/>
+      <xs:element name="LimiterTimeValue" type="xs:float"/>
+      <xs:element name="LimiterActive" type="xs:boolean"/>
+      <xs:element name="LimiterSecondsUpdate" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AmbianceColorTuningSettings" type="AmbianceColorTuningSettingsValues"/>
+  <xs:complexType name="AmbianceColorTuningSettingsValues">
+    <xs:sequence>
+      <xs:element name="Red" type="xs:float"/>
+      <xs:element name="Green" type="xs:float"/>
+      <xs:element name="Blue" type="xs:float"/>
+      <xs:element name="Mode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

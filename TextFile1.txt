@@ -1,0 +1,93 @@
+
+
+Byte 2 [35|36] = [On|Off] = [0x23|0x24]
+
+
+
+Device ON at full red
+[getStatus] reply[0]=129
+[getStatus] reply[1]=4
+[getStatus] reply[2]=35
+[getStatus] reply[3]=97
+[getStatus] reply[4]=33
+[getStatus] reply[5]=16
+[getStatus] reply[6]=255
+[getStatus] reply[7]=0
+[getStatus] reply[8]=0
+[getStatus] reply[9]=0
+[getStatus] reply[10]=3
+[getStatus] reply[11]=0
+[getStatus] reply[12]=0
+[getStatus] reply[13]=60
+
+
+
+Off at full red
+[getStatus] reply[0]=129
+[getStatus] reply[1]=4
+[getStatus] reply[2]=36
+[getStatus] reply[3]=97
+[getStatus] reply[4]=33
+[getStatus] reply[5]=16
+[getStatus] reply[6]=255
+[getStatus] reply[7]=0
+[getStatus] reply[8]=0
+[getStatus] reply[9]=0
+[getStatus] reply[10]=3
+[getStatus] reply[11]=0
+[getStatus] reply[12]=0
+[getStatus] reply[13]=61
+
+
+
+        //Thanks to sidoh for figuring out all of these hardcoded functions
+        //https://github.com/sidoh/ledenet_api/blob/b6f0c5cba03c535cdc877ac2f9787e88763d16be/lib/ledenet/functions.rb
+        public enum LightFunction: byte {
+            SEVEN_COLOR_CROSS_FADE = 0x25,
+            RED_GRADUAL_CHANGE = 0x26,
+            GREEN_GRADUAL_CHANGE = 0x27,
+            BLUE_GRADUAL_CHANGE = 0x28,
+            YELLOW_GRADUAL_CHANGE = 0x29,
+            CYAN_GRADUAL_CHANGE = 0x2A,
+            PURPLE_GRADUAL_CHANGE = 0x2B,
+            WHITE_GRADUAL_CHANGE = 0x2C,
+            RED_GREEN_CROSS_FADE = 0x2D,
+            RED_BLUE_CROSS_FADE = 0x2E,
+            GREEN_BLUE_CROSS_FADE = 0x2F,
+            SEVEN_COLOR_STROBE_FLASH = 0x30,
+            RED_STROBE_FLASH = 0x31,
+            GREEN_STROBE_FLASH = 0x32,
+            BLUE_STROBE_FLASH = 0x33,
+            YELLOW_STROBE_FLASH = 0x34,
+            CYAN_STROBE_FLASH = 0x35,
+            PURPLE_STROBE_FLASH = 0x36,
+            WHITE_STROBE_FLASH = 0x37,
+            SEVEN_COLOR_JUMPING_CHANGE = 0x38,
+            NO_FUNCTION = 0x61
+        }
+
+                    //Find a local ip4 address to modify into a local multicast address
+            IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+            int localIPIndex = 0;
+            foreach (IPAddress addr in localIPs) {
+                Debug.WriteLine(addr);
+                //Discarding ipv6 for now
+                if (addr.IsIPv4MappedToIPv6 || addr.IsIPv6LinkLocal || addr.IsIPv6Multicast || addr.IsIPv6SiteLocal || addr.IsIPv6Teredo) {
+                    Debug.WriteLine("Discarding ip6 address: {0}",addr);
+                    localIPIndex++;
+                } else {
+                    //We found a ip4 address.
+                    break;
+                }
+            }
+            byte[] addressbytes = localIPs[localIPIndex].GetAddressBytes();
+            addressbytes[3] = 255;//multicast reserved address
+
+                //Select the last CustomName node or if not available the root node
+                XmlNode lastNode = settings.SelectSingleNode("//CustomName[last()]");
+                if (lastNode == null) {//no previous customName node
+                    lastNode = settings.DocumentElement;
+                }
+                //lastNode.ParentNode.InsertAfter(customName, lastNode);
+                //settings.DocumentElement.InsertAfter(customName, settings.DocumentElement.LastChild);
+                //settings.AppendChild(customName);

@@ -1,0 +1,14 @@
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.csprojAssemblyReference.cache
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.Mainview.resources
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.Properties.Resources.resources
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.csproj.GenerateResource.cache
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.csproj.CoreCompileInputs.cache
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\bin\Debug\WifiLedController.exe.config
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\bin\Debug\WifiLedController.exe.manifest
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\bin\Debug\WifiLedController.application
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\bin\Debug\WifiLedController.exe
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\bin\Debug\WifiLedController.pdb
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.exe.manifest
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.application
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.exe
+C:\Users\jorri\Source\Repos\MagicHomeLedController\WifiLedController\obj\Debug\WifiLedController.pdb

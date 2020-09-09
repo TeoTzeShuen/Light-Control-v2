@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Settings>
+  <AmbianceSettings>
+    <X>-1680</X>
+    <Xwidth>1680</Xwidth>
+    <Xstride>1</Xstride>
+    <Y>800</Y>
+    <Yheight>20</Yheight>
+    <Ystride>1</Ystride>
+    <LimiterTimeValue>10</LimiterTimeValue>
+    <LimiterActive>True</LimiterActive>
+    <LimiterSecondsUpdate>False</LimiterSecondsUpdate>
+  </AmbianceSettings>
+  <CustomName>
+    <MacAddress>ACCF239EF102</MacAddress>
+    <Name>DeskLed</Name>
+  </CustomName>
+  <AmbianceColorTuningSettings>
+    <Red>2</Red>
+    <Green>0.5</Green>
+    <Blue>0.25</Blue>
+    <Mode>Additive</Mode>
+  </AmbianceColorTuningSettings>
+</Settings>

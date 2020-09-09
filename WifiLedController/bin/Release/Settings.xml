@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Settings>
+  <AmbianceSettings>
+    <X>0</X>
+    <Xwidth>1920</Xwidth>
+    <Xstride>10</Xstride>
+    <Y>1060</Y>
+    <Yheight>20</Yheight>
+    <Ystride>2</Ystride>
+    <LimiterTimeValue>10</LimiterTimeValue>
+    <LimiterActive>True</LimiterActive>
+    <LimiterSecondsUpdate>False</LimiterSecondsUpdate>
+  </AmbianceSettings>
+</Settings>
