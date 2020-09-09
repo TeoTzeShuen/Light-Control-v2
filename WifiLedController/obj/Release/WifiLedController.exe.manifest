@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Uwszztu/CO/6h9V2+Z4Wn8L9NETxFtI/4Uc9o6a5W4Y=</dsig:DigestValue>
+        <dsig:DigestValue>Sb/cuWrGb4QRHVRvKZiSbVMTng0a7ig6DcdOCv4CuE8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,13 +63,13 @@
       <dsig:DigestValue>DkQblqwgqLbr9jmjpkrHwtCfmcWvTjHU2Ka9Dgtyyh8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="WifiLedController.exe.config" size="229">
+  <file name="WifiLedController.exe.config" size="222">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>UOCtukZC3b4FDedkytmxJH+iKsMbaTivIg8NBZg2Cmo=</dsig:DigestValue>
+      <dsig:DigestValue>G9Dmdj3QejXaxMhWOdhEsvbam8CDsYKeuEzBdB3cRJI=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

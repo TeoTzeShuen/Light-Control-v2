@@ -1015,7 +1015,7 @@ namespace WifiLedController
 
         private void buttonAdvancedUpdateSettings_Click(object sender, EventArgs e)
         {
-            //No matter what we just say we need to update the settings
+            //No matter wha we need to update the settings
             WorkerUpdateSettings = true;
         }
 
@@ -1060,6 +1060,8 @@ namespace WifiLedController
 
         private void offToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ambiantMode = false;
+
             if (activeLeds.Count < 1 && selectedLed != null)
             {
                 selectedLed.TurnOff();
@@ -1072,8 +1074,8 @@ namespace WifiLedController
                 }
             }
 
-            buttonOff.Enabled = false;
-            buttonOn.Enabled = true;
+            buttonOff.Enabled = true;
+            buttonOn.Enabled = false;
         }
 
         private void onToolStripMenuItemAmbience_Click(object sender, EventArgs e)
@@ -1110,6 +1112,11 @@ namespace WifiLedController
             {
 
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

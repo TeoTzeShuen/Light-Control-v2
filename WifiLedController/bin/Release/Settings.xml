@@ -3,16 +3,12 @@
   <AmbianceSettings>
     <X>0</X>
     <Xwidth>1920</Xwidth>
-    <Xstride>50</Xstride>
-    <Y>0</Y>
-    <Yheight>1080</Yheight>
-    <Ystride>50</Ystride>
+    <Xstride>10</Xstride>
+    <Y>1060</Y>
+    <Yheight>20</Yheight>
+    <Ystride>2</Ystride>
     <LimiterTimeValue>10</LimiterTimeValue>
     <LimiterActive>True</LimiterActive>
     <LimiterSecondsUpdate>False</LimiterSecondsUpdate>
   </AmbianceSettings>
-  <CustomName>
-    <MacAddress>C82E475FB14D</MacAddress>
-    <Name>Table</Name>
-  </CustomName>
 </Settings>
