@@ -959,9 +959,9 @@
             this.speechlabel.AutoSize = true;
             this.speechlabel.Location = new System.Drawing.Point(137, 278);
             this.speechlabel.Name = "speechlabel";
-            this.speechlabel.Size = new System.Drawing.Size(35, 13);
+            this.speechlabel.Size = new System.Drawing.Size(110, 13);
             this.speechlabel.TabIndex = 22;
-            this.speechlabel.Text = "label7";
+            this.speechlabel.Text = "Waiting For Speech...";
             // 
             // Mainview
             // 
