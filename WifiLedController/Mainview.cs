@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +27,11 @@ namespace WifiLedController
         private ScreenProcessor sp = new ScreenProcessor();
         private XmlSettings xmlSettings = new XmlSettings();
 
+        private static SpeechRecognitionEngine engine;
+
+        private decimal confidenceVal;
+        private int brightnessVal;
+        private bool AudioControlEnabled;
         public Mainview()
         {
             InitializeComponent();
@@ -38,6 +45,28 @@ namespace WifiLedController
             updateCalculations();
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.WorkerReportsProgress = true;
+
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
+        }
+
+        private void Mainview_Load(object sender, EventArgs e)
+        {
+            //set defaults
+            radioButtonaudioOff.Checked = true;
+            radioButtonaudioOn.Checked = false;
+            confidenceVal = 0.90m;
+            brightnessVal = 100;
+            trackBarBrightness.Value = 100;
+            numericUpDownBrightness.Value = 100;
+
+            confidenceVal = settings.Default.ConfValue;
+            numericUpDownconf.Value = settings.Default.ConfValue;
+            AudioControlEnabled = settings.Default.audioControl;
+            if(AudioControlEnabled == true)
+            {
+                radioButtonaudioOn.Checked = true;
+            }
         }
 
         private void SetupAmbianceColorTuningSettings()
@@ -129,6 +158,80 @@ namespace WifiLedController
             receive.Send(bytestring, bytestring.Length, new IPEndPoint(IPAddress.Broadcast, 48899));
 
             receive.BeginReceive(new AsyncCallback(response), null);
+        }
+
+        public void SwitchOn()
+        {
+            if (activeLeds.Count < 1 && selectedLed != null)
+            {
+                selectedLed.TurnOn();
+            }
+            else
+            {
+                foreach (WifiLed led in activeLeds)
+                {
+                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
+                    Task.Factory.StartNew(() => led.TurnOn());
+                }
+            }
+
+            //switch which button is active
+            buttonOff.Enabled = true;
+            buttonOn.Enabled = false;
+        }
+
+        public void SwitchOff()
+        {
+            if (activeLeds.Count < 1 && selectedLed != null)
+            {
+                selectedLed.TurnOff();
+            }
+            else
+            {
+                foreach (WifiLed led in activeLeds)
+                {
+                    Task.Factory.StartNew(() => led.TurnOff());
+                }
+            }
+
+            buttonOff.Enabled = false;
+            buttonOn.Enabled = true;
+        }
+
+        public void ambientOn()
+        {
+            checkBoxAmbianceMode.Checked = true;
+
+            if (checkBoxAmbianceMode.Checked)
+            {
+                ambiantMode = true;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                ambiantMode = false;
+            }
+        }
+
+        public void ambientOff()
+        {
+            checkBoxAmbianceMode.Checked = false;
+
+            if (checkBoxAmbianceMode.Checked)
+            {
+                ambiantMode = true;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                ambiantMode = false;
+            }
         }
 
         private async void response(IAsyncResult res)
@@ -238,8 +341,8 @@ namespace WifiLedController
         {
             if (activeLeds.Count < 1 && selectedLed != null)
             {
-                selectedLed.UpdateRGBWW((byte) numericUpDownRed.Value, (byte) numericUpDownGreen.Value,
-                    (byte) numericUpDownBlue.Value, (byte) numericUpDownWarmWhite.Value);
+                selectedLed.UpdateRGBWW((byte) (numericUpDownRed.Value * brightnessVal / 100), (byte) (numericUpDownGreen.Value * brightnessVal / 100),
+                    (byte) (numericUpDownBlue.Value * brightnessVal / 100), (byte) (numericUpDownWarmWhite.Value * brightnessVal / 100));
             }
             else
             {
@@ -487,41 +590,14 @@ namespace WifiLedController
 
         private void buttonOn_Click(object sender, EventArgs e)
         {
-            //send turn on command to appopriate leds
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOn();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
-                    Task.Factory.StartNew(() => led.TurnOn());
-                }
-            }
-
-            //switch which button is active
-            buttonOff.Enabled = true;
-            buttonOn.Enabled = false;
+            SwitchOn();
         }
 
         private void buttonOff_Click(object sender, EventArgs e)
         {
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOff();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    Task.Factory.StartNew(() => led.TurnOff());
-                }
-            }
-
-            buttonOff.Enabled = false;
-            buttonOn.Enabled = true;
+            ambientOff();
+            System.Threading.Thread.Sleep(200);
+            SwitchOff();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -717,7 +793,7 @@ namespace WifiLedController
             float green = (float) numericUpDownSettingsGreen.Value;
             float blue = (float) numericUpDownSettingsBlue.Value;
 
-            bool limiterActive = LimiterActive; //Local copy so we do activate the limiter only one update
+            bool limiterActive = LimiterActive; //Local copy so we activate the limiter only one update
             bool limiterRate = LimiterUpdateRate;
             decimal updateRate = numericUpDownAdvancedUpdateNumber.Value;
             if (!limiterRate)
@@ -725,12 +801,12 @@ namespace WifiLedController
                 updateRate = (1.0m / numericUpDownAdvancedUpdateNumber.Value);
             }
 
-            updateRate *= 1000; //Convert seconds to milliseconds
+            updateRate *= 1000; //seconds to milliseconds
             this.Invoke((MethodInvoker) (() => buttonAdvancedUpdateSettings.Visible = true));
             //crunch functions in the background
             while (ambiantMode || drawRectangle || mouseTracking)
             {
-                //reset and Start timer so we can track time spend in loops
+                //reset and Start timer so we can track time spent in loops
                 functionTime.Reset();
                 functionTime.Start();
 
@@ -880,7 +956,16 @@ namespace WifiLedController
             drawRectangle = false;
             mouseTracking = false;
 
+            //write XML settings
             xmlSettings.Save();
+
+            //write values for settings
+            settings.Default.ConfValue = numericUpDownconf.Value;
+            settings.Default.audioControl = AudioControlEnabled;
+
+            //write settings file
+            settings.Default.Save();
+            
         }
 
         private void buttonAddDummy_Click_1(object sender, EventArgs e)
@@ -1040,83 +1125,155 @@ namespace WifiLedController
 
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOn();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
-                    Task.Factory.StartNew(() => led.TurnOn());
-                }
-            }
-
-            //switch which button is active
-            buttonOff.Enabled = true;
-            buttonOn.Enabled = false;
+            SwitchOn();
         }
 
         private void offToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ambiantMode = false;
-
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOff();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    Task.Factory.StartNew(() => led.TurnOff());
-                }
-            }
-
-            buttonOff.Enabled = true;
-            buttonOn.Enabled = false;
+            ambientOff();
+            System.Threading.Thread.Sleep(200);
+            SwitchOff();
         }
 
         private void onToolStripMenuItemAmbience_Click(object sender, EventArgs e)
         {
-            checkBoxAmbianceMode.Checked = true;
-
-            if (checkBoxAmbianceMode.Checked)
-            {
-                ambiantMode = true;
-                if (!backgroundWorker1.IsBusy)
-                {
-                    backgroundWorker1.RunWorkerAsync();
-                }
-            }
-            else
-            {
-                ambiantMode = false;
-            }
+            ambientOn();
         }
 
         private void offToolStripMenuItemAmbience_Click(object sender, EventArgs e)
         {
-            checkBoxAmbianceMode.Checked = false;
-
-            if (checkBoxAmbianceMode.Checked)
-            {
-                ambiantMode = true;
-                if (!backgroundWorker1.IsBusy)
-                {
-                    backgroundWorker1.RunWorkerAsync();
-                }
-            }
-            else
-            {
-
-            }
+            ambientOff();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // speech reg ********
+        public void speechReg()
+        {
+            engine=new SpeechRecognitionEngine();
+            engine.SetInputToDefaultAudioDevice();
+            
+            Choices sList = new Choices();
+            sList.Add(new string[] {
+                "on lights", "lights on", "switch on lights",
+                "off lights", "lights off", "switch off lights",
+                "on ambience", "ambience on", "switch on ambience",
+                "off ambience", "ambience off","switch off ambience",
+                "switch off audio control"
+            });
+                
+            Grammar gr = new Grammar(new GrammarBuilder(sList));
+
+            engine.LoadGrammar(gr);
+
+            engine.RecognizeAsync(RecognizeMode.Multiple);
+            engine.SpeechRecognized += rec;
+        }
+
+        private void rec (object sender, SpeechRecognizedEventArgs result)
+        {
+            if (result.Result.Confidence > Convert.ToSingle(confidenceVal))
+            {
+                speechlabel.Text = "You Said: " + result.Result.Text;
+                labelConfidence.Text = "@conf: " + result.Result.Confidence.ToString();
+                this.Text = "Led Controller";
+                //if or statements are short-circuit evaluators, so maybe rearrange these next time to the most common first
+                if (result.Result.Text == "lights on" || result.Result.Text == "on lights" || result.Result.Text == "switch on lights")
+                {
+                    SwitchOn();
+                }
+
+                if (result.Result.Text == "lights off" || result.Result.Text == "off lights" || result.Result.Text == "switch off lights")
+                {
+                    ambientOff();
+                    System.Threading.Thread.Sleep(200);
+                    SwitchOff();
+                }
+
+                if (result.Result.Text == ("ambience on") || result.Result.Text == "on ambience" || result.Result.Text == "switch on ambience")
+                {
+                    ambientOn();
+                }
+
+                if (result.Result.Text == ("ambience off") || result.Result.Text == "off ambience" || result.Result.Text == "switch off ambience")
+                {
+                    ambientOff();
+                }
+
+                if (result.Result.Text == "switch off audio control")
+                {
+                    engine.RecognizeAsyncCancel();
+                    speechlabel.Enabled = false;
+                    speechlabel.Text = "Voice Disabled";
+                }
+            }
+
+            else
+            {
+                speechlabel.Text = "You Said(?): " + result.Result.Text;
+                labelConfidence.Text = "@conf: " + result.Result.Confidence.ToString();
+                this.Text = "Confidence too low! - Try adjusting the settings";
+
+            }
+            
+        }
+        //end
+        private void radioButtonaudioOn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonaudioOn.Checked == true) //just checking
+            {
+                speechReg();
+                speechlabel.Enabled = true;
+                speechlabel.Text = "Voice Enabled, waiting...";
+                labelConfidence.Show();
+                AudioControlEnabled = true;
+            }
+            
+        }
+
+        private void radioButtonaudioOff_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonaudioOff.Checked == true) //just checking
+            {
+                engine.RecognizeAsyncCancel();
+                speechlabel.Enabled = false;
+                speechlabel.Text = "Voice Disabled";
+                labelConfidence.Hide();
+                AudioControlEnabled = false;
+            }
+        }
+
+        private void numericUpDownconf_ValueChanged(object sender, EventArgs e)
+        {
+            confidenceVal = Convert.ToDecimal(numericUpDownconf.Text);
+        }
+
+        //brightness stuff
+        private void trackBarBrightness_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownBrightness.Value = trackBarBrightness.Value;
+            brightnessVal = trackBarBrightness.Value;
+            updateActiveWifiLeds();
+        }
+
+        private void numericUpDownBrightness_ValueChanged(object sender, EventArgs e)
+        {
+            trackBarBrightness.Value = Convert.ToInt32(numericUpDownBrightness.Value);
+            brightnessVal = trackBarBrightness.Value;
+            updateActiveWifiLeds();
+        }
+
+        private void radioButtonLightMode_CheckedChanged(object sender, EventArgs e)
+        {
+            this.BackColor = default(Color);
+            checkedListBoxDevices.BackColor = default(Color);
+            tabPage1.BackColor = default(Color);
+            tabPage2.BackColor = default(Color);
+            tabPage3.BackColor = default(Color);
+            tabPage4.BackColor = default(Color);
         }
     }
 }

@@ -35,15 +35,28 @@
             this.buttonRefreshList = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButtonCustomTheme = new System.Windows.Forms.RadioButton();
+            this.radioButtonDarkMode = new System.Windows.Forms.RadioButton();
+            this.radioButtonLightMode = new System.Windows.Forms.RadioButton();
+            this.groupBoxVoice = new System.Windows.Forms.GroupBox();
+            this.labelConfidence = new System.Windows.Forms.Label();
+            this.numericUpDownconf = new System.Windows.Forms.NumericUpDown();
+            this.speechlabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelSettingsRed = new System.Windows.Forms.Label();
             this.buttonSettingSwitch = new System.Windows.Forms.Button();
+            this.numericUpDownSettingsRed = new System.Windows.Forms.NumericUpDown();
             this.labelSettingsBlue = new System.Windows.Forms.Label();
             this.labellabelSettingsGreen = new System.Windows.Forms.Label();
-            this.labelSettingsRed = new System.Windows.Forms.Label();
             this.numericUpDownSettingsBlue = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownSettingsGreen = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSettingsRed = new System.Windows.Forms.NumericUpDown();
             this.buttonSettingsNameSave = new System.Windows.Forms.Button();
             this.textBoxSettingsName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonaudioOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonaudioOn = new System.Windows.Forms.RadioButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.buttonAdvancedUpdateSettings = new System.Windows.Forms.Button();
             this.groupBoxAdvanced = new System.Windows.Forms.GroupBox();
@@ -75,6 +88,9 @@
             this.trackBarFunctionSpeed = new System.Windows.Forms.TrackBar();
             this.listBoxFunctions = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDownBrightness = new System.Windows.Forms.NumericUpDown();
+            this.trackBarBrightness = new System.Windows.Forms.TrackBar();
             this.buttonOn = new System.Windows.Forms.Button();
             this.buttonRefreshStatus = new System.Windows.Forms.Button();
             this.labelGreen = new System.Windows.Forms.Label();
@@ -103,9 +119,14 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBoxVoice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsGreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBoxAdvanced.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdvancedUpdateNumber)).BeginInit();
@@ -119,6 +140,8 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFunctionSpeed)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrightness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.redBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).BeginInit();
@@ -137,7 +160,7 @@
             this.checkedListBoxDevices.FormattingEnabled = true;
             this.checkedListBoxDevices.Location = new System.Drawing.Point(10, 12);
             this.checkedListBoxDevices.Name = "checkedListBoxDevices";
-            this.checkedListBoxDevices.Size = new System.Drawing.Size(120, 184);
+            this.checkedListBoxDevices.Size = new System.Drawing.Size(120, 174);
             this.checkedListBoxDevices.TabIndex = 12;
             this.checkedListBoxDevices.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxDevices_ItemCheck);
             this.checkedListBoxDevices.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxDevices_SelectedIndexChanged);
@@ -162,13 +185,10 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.buttonSettingSwitch);
-            this.tabPage4.Controls.Add(this.labelSettingsBlue);
-            this.tabPage4.Controls.Add(this.labellabelSettingsGreen);
-            this.tabPage4.Controls.Add(this.labelSettingsRed);
-            this.tabPage4.Controls.Add(this.numericUpDownSettingsBlue);
-            this.tabPage4.Controls.Add(this.numericUpDownSettingsGreen);
-            this.tabPage4.Controls.Add(this.numericUpDownSettingsRed);
+            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage4.Controls.Add(this.groupBox3);
+            this.tabPage4.Controls.Add(this.groupBoxVoice);
+            this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.buttonSettingsNameSave);
             this.tabPage4.Controls.Add(this.textBoxSettingsName);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -177,78 +197,210 @@
             this.tabPage4.Size = new System.Drawing.Size(264, 237);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Settings";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // buttonSettingSwitch
+            // groupBox3
             // 
-            this.buttonSettingSwitch.Location = new System.Drawing.Point(10, 109);
-            this.buttonSettingSwitch.Name = "buttonSettingSwitch";
-            this.buttonSettingSwitch.Size = new System.Drawing.Size(113, 23);
-            this.buttonSettingSwitch.TabIndex = 9;
-            this.buttonSettingSwitch.Text = "Additive Active";
-            this.buttonSettingSwitch.UseVisualStyleBackColor = true;
-            this.buttonSettingSwitch.Click += new System.EventHandler(this.button1_Click_2);
+            this.groupBox3.Controls.Add(this.radioButtonCustomTheme);
+            this.groupBox3.Controls.Add(this.radioButtonDarkMode);
+            this.groupBox3.Controls.Add(this.radioButtonLightMode);
+            this.groupBox3.Location = new System.Drawing.Point(135, 35);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(123, 118);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "App Theme";
             // 
-            // labelSettingsBlue
+            // radioButtonCustomTheme
             // 
-            this.labelSettingsBlue.AutoSize = true;
-            this.labelSettingsBlue.Location = new System.Drawing.Point(7, 92);
-            this.labelSettingsBlue.Name = "labelSettingsBlue";
-            this.labelSettingsBlue.Size = new System.Drawing.Size(31, 13);
-            this.labelSettingsBlue.TabIndex = 8;
-            this.labelSettingsBlue.Text = "Blue:";
+            this.radioButtonCustomTheme.AutoSize = true;
+            this.radioButtonCustomTheme.Location = new System.Drawing.Point(7, 62);
+            this.radioButtonCustomTheme.Name = "radioButtonCustomTheme";
+            this.radioButtonCustomTheme.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonCustomTheme.TabIndex = 2;
+            this.radioButtonCustomTheme.TabStop = true;
+            this.radioButtonCustomTheme.Text = "Light Color";
+            this.radioButtonCustomTheme.UseVisualStyleBackColor = true;
             // 
-            // labellabelSettingsGreen
+            // radioButtonDarkMode
             // 
-            this.labellabelSettingsGreen.AutoSize = true;
-            this.labellabelSettingsGreen.Location = new System.Drawing.Point(7, 67);
-            this.labellabelSettingsGreen.Name = "labellabelSettingsGreen";
-            this.labellabelSettingsGreen.Size = new System.Drawing.Size(39, 13);
-            this.labellabelSettingsGreen.TabIndex = 7;
-            this.labellabelSettingsGreen.Text = "Green:";
+            this.radioButtonDarkMode.AutoSize = true;
+            this.radioButtonDarkMode.Location = new System.Drawing.Point(7, 39);
+            this.radioButtonDarkMode.Name = "radioButtonDarkMode";
+            this.radioButtonDarkMode.Size = new System.Drawing.Size(49, 17);
+            this.radioButtonDarkMode.TabIndex = 1;
+            this.radioButtonDarkMode.TabStop = true;
+            this.radioButtonDarkMode.Text = "Dark";
+            this.radioButtonDarkMode.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLightMode
+            // 
+            this.radioButtonLightMode.AutoSize = true;
+            this.radioButtonLightMode.Location = new System.Drawing.Point(7, 16);
+            this.radioButtonLightMode.Name = "radioButtonLightMode";
+            this.radioButtonLightMode.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonLightMode.TabIndex = 0;
+            this.radioButtonLightMode.TabStop = true;
+            this.radioButtonLightMode.Text = "Light";
+            this.radioButtonLightMode.UseVisualStyleBackColor = true;
+            this.radioButtonLightMode.CheckedChanged += new System.EventHandler(this.radioButtonLightMode_CheckedChanged);
+            // 
+            // groupBoxVoice
+            // 
+            this.groupBoxVoice.Controls.Add(this.labelConfidence);
+            this.groupBoxVoice.Controls.Add(this.numericUpDownconf);
+            this.groupBoxVoice.Controls.Add(this.speechlabel);
+            this.groupBoxVoice.Controls.Add(this.label7);
+            this.groupBoxVoice.Location = new System.Drawing.Point(7, 154);
+            this.groupBoxVoice.Name = "groupBoxVoice";
+            this.groupBoxVoice.Size = new System.Drawing.Size(251, 77);
+            this.groupBoxVoice.TabIndex = 11;
+            this.groupBoxVoice.TabStop = false;
+            this.groupBoxVoice.Text = "Voice Control";
+            // 
+            // labelConfidence
+            // 
+            this.labelConfidence.AutoSize = true;
+            this.labelConfidence.Location = new System.Drawing.Point(6, 60);
+            this.labelConfidence.Name = "labelConfidence";
+            this.labelConfidence.Size = new System.Drawing.Size(0, 13);
+            this.labelConfidence.TabIndex = 23;
+            // 
+            // numericUpDownconf
+            // 
+            this.numericUpDownconf.DecimalPlaces = 2;
+            this.numericUpDownconf.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.numericUpDownconf.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.numericUpDownconf.Location = new System.Drawing.Point(74, 17);
+            this.numericUpDownconf.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownconf.Name = "numericUpDownconf";
+            this.numericUpDownconf.ReadOnly = true;
+            this.numericUpDownconf.Size = new System.Drawing.Size(48, 22);
+            this.numericUpDownconf.TabIndex = 1;
+            this.numericUpDownconf.TabStop = false;
+            this.toolTip.SetToolTip(this.numericUpDownconf, "Range is 0 > 1. The lower, the more accepting the voice recognition is. \r\nHowever" +
+        ", this may cause the wrong phrases to be picked up as a command.\r\nDefault = 0.9\r" +
+        "\n");
+            this.numericUpDownconf.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            65536});
+            this.numericUpDownconf.ValueChanged += new System.EventHandler(this.numericUpDownconf_ValueChanged);
+            // 
+            // speechlabel
+            // 
+            this.speechlabel.AutoSize = true;
+            this.speechlabel.Enabled = false;
+            this.speechlabel.Location = new System.Drawing.Point(6, 47);
+            this.speechlabel.Name = "speechlabel";
+            this.speechlabel.Size = new System.Drawing.Size(82, 13);
+            this.speechlabel.TabIndex = 22;
+            this.speechlabel.Text = "Voice Disabled";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Confidence:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.labelSettingsRed);
+            this.groupBox2.Controls.Add(this.buttonSettingSwitch);
+            this.groupBox2.Controls.Add(this.numericUpDownSettingsRed);
+            this.groupBox2.Controls.Add(this.labelSettingsBlue);
+            this.groupBox2.Controls.Add(this.labellabelSettingsGreen);
+            this.groupBox2.Controls.Add(this.numericUpDownSettingsBlue);
+            this.groupBox2.Controls.Add(this.numericUpDownSettingsGreen);
+            this.groupBox2.Location = new System.Drawing.Point(7, 35);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(122, 118);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Color Correction";
+            this.toolTip.SetToolTip(this.groupBox2, "Color Adjustment for ambience");
             // 
             // labelSettingsRed
             // 
             this.labelSettingsRed.AutoSize = true;
-            this.labelSettingsRed.Location = new System.Drawing.Point(7, 40);
+            this.labelSettingsRed.Location = new System.Drawing.Point(6, 16);
             this.labelSettingsRed.Name = "labelSettingsRed";
             this.labelSettingsRed.Size = new System.Drawing.Size(30, 13);
             this.labelSettingsRed.TabIndex = 6;
             this.labelSettingsRed.Text = "Red:";
             // 
-            // numericUpDownSettingsBlue
+            // buttonSettingSwitch
             // 
-            this.numericUpDownSettingsBlue.Location = new System.Drawing.Point(52, 85);
-            this.numericUpDownSettingsBlue.Name = "numericUpDownSettingsBlue";
-            this.numericUpDownSettingsBlue.Size = new System.Drawing.Size(59, 20);
-            this.numericUpDownSettingsBlue.TabIndex = 5;
-            this.numericUpDownSettingsBlue.ValueChanged += new System.EventHandler(this.numericUpDownSettingsBlue_ValueChanged);
-            // 
-            // numericUpDownSettingsGreen
-            // 
-            this.numericUpDownSettingsGreen.Location = new System.Drawing.Point(52, 59);
-            this.numericUpDownSettingsGreen.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDownSettingsGreen.Name = "numericUpDownSettingsGreen";
-            this.numericUpDownSettingsGreen.Size = new System.Drawing.Size(59, 20);
-            this.numericUpDownSettingsGreen.TabIndex = 4;
-            this.numericUpDownSettingsGreen.ValueChanged += new System.EventHandler(this.numericUpDownSettingsGreen_ValueChanged);
+            this.buttonSettingSwitch.Location = new System.Drawing.Point(9, 92);
+            this.buttonSettingSwitch.Name = "buttonSettingSwitch";
+            this.buttonSettingSwitch.Size = new System.Drawing.Size(107, 21);
+            this.buttonSettingSwitch.TabIndex = 9;
+            this.buttonSettingSwitch.Text = "Additive Active";
+            this.buttonSettingSwitch.UseVisualStyleBackColor = true;
+            this.buttonSettingSwitch.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // numericUpDownSettingsRed
             // 
-            this.numericUpDownSettingsRed.Location = new System.Drawing.Point(52, 33);
+            this.numericUpDownSettingsRed.Location = new System.Drawing.Point(54, 14);
             this.numericUpDownSettingsRed.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.numericUpDownSettingsRed.Name = "numericUpDownSettingsRed";
-            this.numericUpDownSettingsRed.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDownSettingsRed.Size = new System.Drawing.Size(59, 22);
             this.numericUpDownSettingsRed.TabIndex = 3;
             this.numericUpDownSettingsRed.ValueChanged += new System.EventHandler(this.numericUpDownSettingsRed_ValueChanged);
+            // 
+            // labelSettingsBlue
+            // 
+            this.labelSettingsBlue.AutoSize = true;
+            this.labelSettingsBlue.Location = new System.Drawing.Point(6, 68);
+            this.labelSettingsBlue.Name = "labelSettingsBlue";
+            this.labelSettingsBlue.Size = new System.Drawing.Size(32, 13);
+            this.labelSettingsBlue.TabIndex = 8;
+            this.labelSettingsBlue.Text = "Blue:";
+            // 
+            // labellabelSettingsGreen
+            // 
+            this.labellabelSettingsGreen.AutoSize = true;
+            this.labellabelSettingsGreen.Location = new System.Drawing.Point(6, 42);
+            this.labellabelSettingsGreen.Name = "labellabelSettingsGreen";
+            this.labellabelSettingsGreen.Size = new System.Drawing.Size(41, 13);
+            this.labellabelSettingsGreen.TabIndex = 7;
+            this.labellabelSettingsGreen.Text = "Green:";
+            // 
+            // numericUpDownSettingsBlue
+            // 
+            this.numericUpDownSettingsBlue.Location = new System.Drawing.Point(54, 66);
+            this.numericUpDownSettingsBlue.Name = "numericUpDownSettingsBlue";
+            this.numericUpDownSettingsBlue.Size = new System.Drawing.Size(59, 22);
+            this.numericUpDownSettingsBlue.TabIndex = 5;
+            this.numericUpDownSettingsBlue.ValueChanged += new System.EventHandler(this.numericUpDownSettingsBlue_ValueChanged);
+            // 
+            // numericUpDownSettingsGreen
+            // 
+            this.numericUpDownSettingsGreen.Location = new System.Drawing.Point(54, 40);
+            this.numericUpDownSettingsGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownSettingsGreen.Name = "numericUpDownSettingsGreen";
+            this.numericUpDownSettingsGreen.Size = new System.Drawing.Size(59, 22);
+            this.numericUpDownSettingsGreen.TabIndex = 4;
+            this.numericUpDownSettingsGreen.ValueChanged += new System.EventHandler(this.numericUpDownSettingsGreen_ValueChanged);
             // 
             // buttonSettingsNameSave
             // 
@@ -264,8 +416,44 @@
             // 
             this.textBoxSettingsName.Location = new System.Drawing.Point(7, 7);
             this.textBoxSettingsName.Name = "textBoxSettingsName";
-            this.textBoxSettingsName.Size = new System.Drawing.Size(170, 20);
+            this.textBoxSettingsName.Size = new System.Drawing.Size(170, 22);
             this.textBoxSettingsName.TabIndex = 0;
+            this.toolTip.SetToolTip(this.textBoxSettingsName, "Custom name for selected device");
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonaudioOff);
+            this.groupBox1.Controls.Add(this.radioButtonaudioOn);
+            this.groupBox1.Location = new System.Drawing.Point(10, 238);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(120, 37);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Audio Control";
+            // 
+            // radioButtonaudioOff
+            // 
+            this.radioButtonaudioOff.AutoSize = true;
+            this.radioButtonaudioOff.Checked = true;
+            this.radioButtonaudioOff.Location = new System.Drawing.Point(53, 14);
+            this.radioButtonaudioOff.Name = "radioButtonaudioOff";
+            this.radioButtonaudioOff.Size = new System.Drawing.Size(42, 17);
+            this.radioButtonaudioOff.TabIndex = 1;
+            this.radioButtonaudioOff.TabStop = true;
+            this.radioButtonaudioOff.Text = "Off";
+            this.radioButtonaudioOff.UseVisualStyleBackColor = true;
+            this.radioButtonaudioOff.CheckedChanged += new System.EventHandler(this.radioButtonaudioOff_CheckedChanged);
+            // 
+            // radioButtonaudioOn
+            // 
+            this.radioButtonaudioOn.AutoSize = true;
+            this.radioButtonaudioOn.Location = new System.Drawing.Point(6, 14);
+            this.radioButtonaudioOn.Name = "radioButtonaudioOn";
+            this.radioButtonaudioOn.Size = new System.Drawing.Size(41, 17);
+            this.radioButtonaudioOn.TabIndex = 0;
+            this.radioButtonaudioOn.Text = "On";
+            this.radioButtonaudioOn.UseVisualStyleBackColor = true;
+            this.radioButtonaudioOn.CheckedChanged += new System.EventHandler(this.radioButtonaudioOn_CheckedChanged);
             // 
             // tabPage3
             // 
@@ -277,7 +465,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(264, 237);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Advanced";
+            this.tabPage3.Text = "Ambience";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // buttonAdvancedUpdateSettings
@@ -342,7 +530,7 @@
             0,
             131072});
             this.numericUpDownAdvancedUpdateNumber.Name = "numericUpDownAdvancedUpdateNumber";
-            this.numericUpDownAdvancedUpdateNumber.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDownAdvancedUpdateNumber.Size = new System.Drawing.Size(56, 22);
             this.numericUpDownAdvancedUpdateNumber.TabIndex = 21;
             this.toolTip.SetToolTip(this.numericUpDownAdvancedUpdateNumber, "Limiter rate");
             this.numericUpDownAdvancedUpdateNumber.Value = new decimal(new int[] {
@@ -368,7 +556,7 @@
             this.labelAdvancedCoordinates.AutoSize = true;
             this.labelAdvancedCoordinates.Location = new System.Drawing.Point(3, 162);
             this.labelAdvancedCoordinates.Name = "labelAdvancedCoordinates";
-            this.labelAdvancedCoordinates.Size = new System.Drawing.Size(142, 13);
+            this.labelAdvancedCoordinates.Size = new System.Drawing.Size(156, 13);
             this.labelAdvancedCoordinates.TabIndex = 19;
             this.labelAdvancedCoordinates.Text = "Mouse tracking not enabled.";
             // 
@@ -377,7 +565,7 @@
             this.labelColorMouse.AutoSize = true;
             this.labelColorMouse.Location = new System.Drawing.Point(51, 175);
             this.labelColorMouse.Name = "labelColorMouse";
-            this.labelColorMouse.Size = new System.Drawing.Size(99, 13);
+            this.labelColorMouse.Size = new System.Drawing.Size(110, 13);
             this.labelColorMouse.TabIndex = 18;
             this.labelColorMouse.Text = "Color under Mouse:";
             // 
@@ -386,7 +574,7 @@
             this.checkBoxMouseTracking.AutoSize = true;
             this.checkBoxMouseTracking.Location = new System.Drawing.Point(6, 142);
             this.checkBoxMouseTracking.Name = "checkBoxMouseTracking";
-            this.checkBoxMouseTracking.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxMouseTracking.Size = new System.Drawing.Size(107, 17);
             this.checkBoxMouseTracking.TabIndex = 17;
             this.checkBoxMouseTracking.Text = "Mouse Tracking";
             this.checkBoxMouseTracking.UseVisualStyleBackColor = true;
@@ -397,7 +585,7 @@
             this.checkBoxAdvancedShowRegion.AutoSize = true;
             this.checkBoxAdvancedShowRegion.Location = new System.Drawing.Point(139, 79);
             this.checkBoxAdvancedShowRegion.Name = "checkBoxAdvancedShowRegion";
-            this.checkBoxAdvancedShowRegion.Size = new System.Drawing.Size(90, 17);
+            this.checkBoxAdvancedShowRegion.Size = new System.Drawing.Size(95, 17);
             this.checkBoxAdvancedShowRegion.TabIndex = 16;
             this.checkBoxAdvancedShowRegion.Text = "Show Region";
             this.checkBoxAdvancedShowRegion.UseVisualStyleBackColor = true;
@@ -416,7 +604,7 @@
             this.labelAdvancedCalcAmount.AutoSize = true;
             this.labelAdvancedCalcAmount.Location = new System.Drawing.Point(0, 80);
             this.labelAdvancedCalcAmount.Name = "labelAdvancedCalcAmount";
-            this.labelAdvancedCalcAmount.Size = new System.Drawing.Size(123, 13);
+            this.labelAdvancedCalcAmount.Size = new System.Drawing.Size(134, 13);
             this.labelAdvancedCalcAmount.TabIndex = 15;
             this.labelAdvancedCalcAmount.Text = "[#] calculations required.";
             // 
@@ -426,7 +614,7 @@
             this.labelAdvancedCalcTime.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelAdvancedCalcTime.Location = new System.Drawing.Point(1, 96);
             this.labelAdvancedCalcTime.Name = "labelAdvancedCalcTime";
-            this.labelAdvancedCalcTime.Size = new System.Drawing.Size(162, 13);
+            this.labelAdvancedCalcTime.Size = new System.Drawing.Size(175, 13);
             this.labelAdvancedCalcTime.TabIndex = 14;
             this.labelAdvancedCalcTime.Text = "No calculation time available yet.";
             // 
@@ -444,7 +632,7 @@
             0,
             0});
             this.numericUpDownAdvancedYstride.Name = "numericUpDownAdvancedYstride";
-            this.numericUpDownAdvancedYstride.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDownAdvancedYstride.Size = new System.Drawing.Size(50, 22);
             this.numericUpDownAdvancedYstride.TabIndex = 13;
             this.toolTip.SetToolTip(this.numericUpDownAdvancedYstride, "How many pixels to skip per calcuated pixel on the Y axis");
             this.numericUpDownAdvancedYstride.Value = new decimal(new int[] {
@@ -463,7 +651,7 @@
             0,
             0});
             this.numericUpDownAdvancedYheight.Name = "numericUpDownAdvancedYheight";
-            this.numericUpDownAdvancedYheight.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDownAdvancedYheight.Size = new System.Drawing.Size(50, 22);
             this.numericUpDownAdvancedYheight.TabIndex = 12;
             this.numericUpDownAdvancedYheight.Value = new decimal(new int[] {
             1080,
@@ -477,7 +665,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(111, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Ystride:";
             // 
@@ -486,7 +674,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(111, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Yheight:";
             // 
@@ -504,7 +692,7 @@
             0,
             -2147483648});
             this.numericUpDownAdvancedY.Name = "numericUpDownAdvancedY";
-            this.numericUpDownAdvancedY.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDownAdvancedY.Size = new System.Drawing.Size(50, 22);
             this.numericUpDownAdvancedY.TabIndex = 11;
             this.toolTip.SetToolTip(this.numericUpDownAdvancedY, "Starting Y-coordinate");
             this.numericUpDownAdvancedY.ValueChanged += new System.EventHandler(this.numericUpDownAdvancedY_ValueChanged);
@@ -514,7 +702,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(136, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 13);
+            this.label6.Size = new System.Drawing.Size(15, 13);
             this.label6.TabIndex = 8;
             this.label6.Text = "Y:";
             // 
@@ -532,7 +720,7 @@
             0,
             0});
             this.numericUpDownAdvancedXstride.Name = "numericUpDownAdvancedXstride";
-            this.numericUpDownAdvancedXstride.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDownAdvancedXstride.Size = new System.Drawing.Size(50, 22);
             this.numericUpDownAdvancedXstride.TabIndex = 7;
             this.toolTip.SetToolTip(this.numericUpDownAdvancedXstride, "How many pixels to skip per calcuated pixel on the X axis");
             this.numericUpDownAdvancedXstride.Value = new decimal(new int[] {
@@ -551,7 +739,7 @@
             0,
             0});
             this.numericUpDownAdvancedXwidth.Name = "numericUpDownAdvancedXwidth";
-            this.numericUpDownAdvancedXwidth.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDownAdvancedXwidth.Size = new System.Drawing.Size(50, 22);
             this.numericUpDownAdvancedXwidth.TabIndex = 6;
             this.numericUpDownAdvancedXwidth.Value = new decimal(new int[] {
             1920,
@@ -565,7 +753,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 59);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Xstride:";
             // 
@@ -574,7 +762,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Xwidth:";
             // 
@@ -592,7 +780,7 @@
             0,
             -2147483648});
             this.numericUpDownAdvancedX.Name = "numericUpDownAdvancedX";
-            this.numericUpDownAdvancedX.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDownAdvancedX.Size = new System.Drawing.Size(50, 22);
             this.numericUpDownAdvancedX.TabIndex = 5;
             this.toolTip.SetToolTip(this.numericUpDownAdvancedX, "Starting X-coordinate");
             this.numericUpDownAdvancedX.ValueChanged += new System.EventHandler(this.numericUpDownAdvancedX_ValueChanged);
@@ -602,7 +790,7 @@
             this.labelAdvancedX.AutoSize = true;
             this.labelAdvancedX.Location = new System.Drawing.Point(31, 16);
             this.labelAdvancedX.Name = "labelAdvancedX";
-            this.labelAdvancedX.Size = new System.Drawing.Size(17, 13);
+            this.labelAdvancedX.Size = new System.Drawing.Size(16, 13);
             this.labelAdvancedX.TabIndex = 3;
             this.labelAdvancedX.Text = "X:";
             // 
@@ -611,7 +799,7 @@
             this.checkBoxAmbianceMode.AutoSize = true;
             this.checkBoxAmbianceMode.Location = new System.Drawing.Point(7, 7);
             this.checkBoxAmbianceMode.Name = "checkBoxAmbianceMode";
-            this.checkBoxAmbianceMode.Size = new System.Drawing.Size(102, 17);
+            this.checkBoxAmbianceMode.Size = new System.Drawing.Size(108, 17);
             this.checkBoxAmbianceMode.TabIndex = 0;
             this.checkBoxAmbianceMode.Text = "Ambiance mode";
             this.checkBoxAmbianceMode.UseVisualStyleBackColor = true;
@@ -635,7 +823,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Speed";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -667,6 +855,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.numericUpDownBrightness);
+            this.tabPage1.Controls.Add(this.trackBarBrightness);
             this.tabPage1.Controls.Add(this.buttonOn);
             this.tabPage1.Controls.Add(this.buttonRefreshStatus);
             this.tabPage1.Controls.Add(this.labelGreen);
@@ -691,11 +882,40 @@
             this.tabPage1.Text = "Lights";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(207, 168);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Strength";
+            // 
+            // numericUpDownBrightness
+            // 
+            this.numericUpDownBrightness.Location = new System.Drawing.Point(210, 145);
+            this.numericUpDownBrightness.Name = "numericUpDownBrightness";
+            this.numericUpDownBrightness.Size = new System.Drawing.Size(45, 22);
+            this.numericUpDownBrightness.TabIndex = 19;
+            this.numericUpDownBrightness.ValueChanged += new System.EventHandler(this.numericUpDownBrightness_ValueChanged);
+            // 
+            // trackBarBrightness
+            // 
+            this.trackBarBrightness.LargeChange = 1;
+            this.trackBarBrightness.Location = new System.Drawing.Point(210, 35);
+            this.trackBarBrightness.Maximum = 100;
+            this.trackBarBrightness.Name = "trackBarBrightness";
+            this.trackBarBrightness.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarBrightness.Size = new System.Drawing.Size(45, 104);
+            this.trackBarBrightness.TabIndex = 18;
+            this.trackBarBrightness.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarBrightness.ValueChanged += new System.EventHandler(this.trackBarBrightness_ValueChanged);
+            // 
             // buttonOn
             // 
             this.buttonOn.Location = new System.Drawing.Point(6, 6);
             this.buttonOn.Name = "buttonOn";
-            this.buttonOn.Size = new System.Drawing.Size(75, 23);
+            this.buttonOn.Size = new System.Drawing.Size(79, 23);
             this.buttonOn.TabIndex = 0;
             this.buttonOn.Text = "On";
             this.buttonOn.UseVisualStyleBackColor = true;
@@ -703,9 +923,9 @@
             // 
             // buttonRefreshStatus
             // 
-            this.buttonRefreshStatus.Location = new System.Drawing.Point(169, 4);
+            this.buttonRefreshStatus.Location = new System.Drawing.Point(176, 6);
             this.buttonRefreshStatus.Name = "buttonRefreshStatus";
-            this.buttonRefreshStatus.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefreshStatus.Size = new System.Drawing.Size(79, 23);
             this.buttonRefreshStatus.TabIndex = 17;
             this.buttonRefreshStatus.Text = "Refresh";
             this.toolTip.SetToolTip(this.buttonRefreshStatus, "gets all settings from the LED controller and overwrites any displayed settings");
@@ -717,15 +937,15 @@
             this.labelGreen.AutoSize = true;
             this.labelGreen.Location = new System.Drawing.Point(54, 168);
             this.labelGreen.Name = "labelGreen";
-            this.labelGreen.Size = new System.Drawing.Size(36, 13);
+            this.labelGreen.Size = new System.Drawing.Size(38, 13);
             this.labelGreen.TabIndex = 9;
             this.labelGreen.Text = "Green";
             // 
             // buttonOff
             // 
-            this.buttonOff.Location = new System.Drawing.Point(87, 5);
+            this.buttonOff.Location = new System.Drawing.Point(91, 6);
             this.buttonOff.Name = "buttonOff";
-            this.buttonOff.Size = new System.Drawing.Size(75, 23);
+            this.buttonOff.Size = new System.Drawing.Size(79, 23);
             this.buttonOff.TabIndex = 1;
             this.buttonOff.Text = "Off";
             this.buttonOff.UseVisualStyleBackColor = true;
@@ -745,16 +965,16 @@
             this.labelWarmWhite.AutoSize = true;
             this.labelWarmWhite.Location = new System.Drawing.Point(156, 168);
             this.labelWarmWhite.Name = "labelWarmWhite";
-            this.labelWarmWhite.Size = new System.Drawing.Size(66, 13);
+            this.labelWarmWhite.Size = new System.Drawing.Size(38, 13);
             this.labelWarmWhite.TabIndex = 16;
-            this.labelWarmWhite.Text = "Warm White";
+            this.labelWarmWhite.Text = "White";
             // 
             // labelBlue
             // 
             this.labelBlue.AutoSize = true;
             this.labelBlue.Location = new System.Drawing.Point(105, 168);
             this.labelBlue.Name = "labelBlue";
-            this.labelBlue.Size = new System.Drawing.Size(28, 13);
+            this.labelBlue.Size = new System.Drawing.Size(29, 13);
             this.labelBlue.TabIndex = 10;
             this.labelBlue.Text = "Blue";
             // 
@@ -780,7 +1000,7 @@
             0,
             0});
             this.numericUpDownBlue.Name = "numericUpDownBlue";
-            this.numericUpDownBlue.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDownBlue.Size = new System.Drawing.Size(45, 22);
             this.numericUpDownBlue.TabIndex = 7;
             this.numericUpDownBlue.ValueChanged += new System.EventHandler(this.numericUpDownBlue_ValueChanged);
             // 
@@ -793,7 +1013,7 @@
             0,
             0});
             this.numericUpDownWarmWhite.Name = "numericUpDownWarmWhite";
-            this.numericUpDownWarmWhite.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDownWarmWhite.Size = new System.Drawing.Size(45, 22);
             this.numericUpDownWarmWhite.TabIndex = 15;
             this.numericUpDownWarmWhite.ValueChanged += new System.EventHandler(this.numericUpDownWarmWhite_ValueChanged);
             // 
@@ -802,7 +1022,7 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pictureBox1.Location = new System.Drawing.Point(6, 184);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(249, 50);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -829,7 +1049,7 @@
             0,
             0});
             this.numericUpDownGreen.Name = "numericUpDownGreen";
-            this.numericUpDownGreen.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDownGreen.Size = new System.Drawing.Size(45, 22);
             this.numericUpDownGreen.TabIndex = 6;
             this.numericUpDownGreen.ValueChanged += new System.EventHandler(this.numericUpDownGreen_ValueChanged);
             // 
@@ -855,7 +1075,7 @@
             0,
             0});
             this.numericUpDownRed.Name = "numericUpDownRed";
-            this.numericUpDownRed.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDownRed.Size = new System.Drawing.Size(45, 22);
             this.numericUpDownRed.TabIndex = 5;
             this.numericUpDownRed.ValueChanged += new System.EventHandler(this.numericUpDownRed_ValueChanged);
             // 
@@ -905,12 +1125,15 @@
             this.powerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.onToolStripMenuItem,
             this.offToolStripMenuItem});
+            this.powerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("powerToolStripMenuItem.Image")));
             this.powerToolStripMenuItem.Name = "powerToolStripMenuItem";
             this.powerToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.powerToolStripMenuItem.Text = "Power";
+            this.powerToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // onToolStripMenuItem
             // 
+            this.onToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("onToolStripMenuItem.Image")));
             this.onToolStripMenuItem.Name = "onToolStripMenuItem";
             this.onToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.onToolStripMenuItem.Text = "On";
@@ -918,6 +1141,7 @@
             // 
             // offToolStripMenuItem
             // 
+            this.offToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("offToolStripMenuItem.Image")));
             this.offToolStripMenuItem.Name = "offToolStripMenuItem";
             this.offToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.offToolStripMenuItem.Text = "Off";
@@ -928,6 +1152,7 @@
             this.ambienceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.onToolStripMenuItemAmbience,
             this.offToolStripMenuItemAmbience});
+            this.ambienceToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ambienceToolStripMenuItem.Image")));
             this.ambienceToolStripMenuItem.Name = "ambienceToolStripMenuItem";
             this.ambienceToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.ambienceToolStripMenuItem.Text = "Ambience";
@@ -958,9 +1183,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 293);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControlDevice);
             this.Controls.Add(this.buttonRefreshList);
             this.Controls.Add(this.checkedListBoxDevices);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -968,12 +1196,22 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Led Controller";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Mainview_FormClosing);
+            this.Load += new System.EventHandler(this.Mainview_Load);
             this.Resize += new System.EventHandler(this.Mainview_Resize);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBoxVoice.ResumeLayout(false);
+            this.groupBoxVoice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsBlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsGreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBoxAdvanced.ResumeLayout(false);
@@ -991,6 +1229,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFunctionSpeed)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrightness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.redBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).EndInit();
@@ -1082,6 +1322,22 @@
         private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItemAmbience;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label speechlabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonaudioOff;
+        private System.Windows.Forms.RadioButton radioButtonaudioOn;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxVoice;
+        private System.Windows.Forms.NumericUpDown numericUpDownconf;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelConfidence;
+        private System.Windows.Forms.NumericUpDown numericUpDownBrightness;
+        private System.Windows.Forms.TrackBar trackBarBrightness;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioButtonCustomTheme;
+        private System.Windows.Forms.RadioButton radioButtonDarkMode;
+        private System.Windows.Forms.RadioButton radioButtonLightMode;
     }
 }
 

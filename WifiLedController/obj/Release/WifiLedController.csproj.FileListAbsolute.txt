@@ -30,7 +30,6 @@ C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\bin\Release\WifiL
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\bin\Release\WifiLedController.application
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\bin\Release\WifiLedController.exe
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\bin\Release\WifiLedController.pdb
-C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.csprojAssemblyReference.cache
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.Mainview.resources
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.Properties.Resources.resources
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.csproj.GenerateResource.cache
@@ -39,3 +38,4 @@ C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiL
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.application
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.exe
 C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.pdb
+C:\Users\teotz\Source\Repos\Light Control v2\WifiLedController\obj\Release\WifiLedController.csprojAssemblyReference.cache

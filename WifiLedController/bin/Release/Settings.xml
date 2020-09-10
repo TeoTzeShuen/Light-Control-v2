@@ -3,12 +3,22 @@
   <AmbianceSettings>
     <X>0</X>
     <Xwidth>1920</Xwidth>
-    <Xstride>10</Xstride>
-    <Y>1060</Y>
-    <Yheight>20</Yheight>
-    <Ystride>2</Ystride>
+    <Xstride>50</Xstride>
+    <Y>0</Y>
+    <Yheight>1080</Yheight>
+    <Ystride>50</Ystride>
     <LimiterTimeValue>10</LimiterTimeValue>
     <LimiterActive>True</LimiterActive>
     <LimiterSecondsUpdate>False</LimiterSecondsUpdate>
   </AmbianceSettings>
+  <AmbianceColorTuningSettings>
+    <Red>0</Red>
+    <Green>0</Green>
+    <Blue>0</Blue>
+    <Mode>Additive</Mode>
+  </AmbianceColorTuningSettings>
+  <CustomName>
+    <MacAddress>C82E475FB14D</MacAddress>
+    <Name>Table lights</Name>
+  </CustomName>
 </Settings>
