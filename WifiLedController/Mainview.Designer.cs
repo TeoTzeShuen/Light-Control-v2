@@ -35,15 +35,24 @@
             this.buttonRefreshList = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBoxVoice = new System.Windows.Forms.GroupBox();
+            this.labelConfidence = new System.Windows.Forms.Label();
+            this.numericUpDownconf = new System.Windows.Forms.NumericUpDown();
+            this.speechlabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelSettingsRed = new System.Windows.Forms.Label();
             this.buttonSettingSwitch = new System.Windows.Forms.Button();
+            this.numericUpDownSettingsRed = new System.Windows.Forms.NumericUpDown();
             this.labelSettingsBlue = new System.Windows.Forms.Label();
             this.labellabelSettingsGreen = new System.Windows.Forms.Label();
-            this.labelSettingsRed = new System.Windows.Forms.Label();
             this.numericUpDownSettingsBlue = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownSettingsGreen = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSettingsRed = new System.Windows.Forms.NumericUpDown();
             this.buttonSettingsNameSave = new System.Windows.Forms.Button();
             this.textBoxSettingsName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonaudioOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonaudioOn = new System.Windows.Forms.RadioButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.buttonAdvancedUpdateSettings = new System.Windows.Forms.Button();
             this.groupBoxAdvanced = new System.Windows.Forms.GroupBox();
@@ -102,11 +111,14 @@
             this.offToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.speechlabel = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
+            this.groupBoxVoice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsGreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBoxAdvanced.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdvancedUpdateNumber)).BeginInit();
@@ -163,13 +175,8 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.buttonSettingSwitch);
-            this.tabPage4.Controls.Add(this.labelSettingsBlue);
-            this.tabPage4.Controls.Add(this.labellabelSettingsGreen);
-            this.tabPage4.Controls.Add(this.labelSettingsRed);
-            this.tabPage4.Controls.Add(this.numericUpDownSettingsBlue);
-            this.tabPage4.Controls.Add(this.numericUpDownSettingsGreen);
-            this.tabPage4.Controls.Add(this.numericUpDownSettingsRed);
+            this.tabPage4.Controls.Add(this.groupBoxVoice);
+            this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.buttonSettingsNameSave);
             this.tabPage4.Controls.Add(this.textBoxSettingsName);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -180,67 +187,114 @@
             this.tabPage4.Text = "Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // buttonSettingSwitch
+            // groupBoxVoice
             // 
-            this.buttonSettingSwitch.Location = new System.Drawing.Point(10, 109);
-            this.buttonSettingSwitch.Name = "buttonSettingSwitch";
-            this.buttonSettingSwitch.Size = new System.Drawing.Size(113, 23);
-            this.buttonSettingSwitch.TabIndex = 9;
-            this.buttonSettingSwitch.Text = "Additive Active";
-            this.buttonSettingSwitch.UseVisualStyleBackColor = true;
-            this.buttonSettingSwitch.Click += new System.EventHandler(this.button1_Click_2);
+            this.groupBoxVoice.Controls.Add(this.labelConfidence);
+            this.groupBoxVoice.Controls.Add(this.numericUpDownconf);
+            this.groupBoxVoice.Controls.Add(this.speechlabel);
+            this.groupBoxVoice.Controls.Add(this.label7);
+            this.groupBoxVoice.Location = new System.Drawing.Point(7, 154);
+            this.groupBoxVoice.Name = "groupBoxVoice";
+            this.groupBoxVoice.Size = new System.Drawing.Size(251, 77);
+            this.groupBoxVoice.TabIndex = 11;
+            this.groupBoxVoice.TabStop = false;
+            this.groupBoxVoice.Text = "Voice Control";
             // 
-            // labelSettingsBlue
+            // labelConfidence
             // 
-            this.labelSettingsBlue.AutoSize = true;
-            this.labelSettingsBlue.Location = new System.Drawing.Point(7, 92);
-            this.labelSettingsBlue.Name = "labelSettingsBlue";
-            this.labelSettingsBlue.Size = new System.Drawing.Size(31, 13);
-            this.labelSettingsBlue.TabIndex = 8;
-            this.labelSettingsBlue.Text = "Blue:";
+            this.labelConfidence.AutoSize = true;
+            this.labelConfidence.Location = new System.Drawing.Point(6, 60);
+            this.labelConfidence.Name = "labelConfidence";
+            this.labelConfidence.Size = new System.Drawing.Size(0, 13);
+            this.labelConfidence.TabIndex = 23;
             // 
-            // labellabelSettingsGreen
+            // numericUpDownconf
             // 
-            this.labellabelSettingsGreen.AutoSize = true;
-            this.labellabelSettingsGreen.Location = new System.Drawing.Point(7, 67);
-            this.labellabelSettingsGreen.Name = "labellabelSettingsGreen";
-            this.labellabelSettingsGreen.Size = new System.Drawing.Size(39, 13);
-            this.labellabelSettingsGreen.TabIndex = 7;
-            this.labellabelSettingsGreen.Text = "Green:";
+            this.numericUpDownconf.DecimalPlaces = 2;
+            this.numericUpDownconf.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.numericUpDownconf.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.numericUpDownconf.Location = new System.Drawing.Point(68, 14);
+            this.numericUpDownconf.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownconf.Name = "numericUpDownconf";
+            this.numericUpDownconf.ReadOnly = true;
+            this.numericUpDownconf.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDownconf.TabIndex = 1;
+            this.numericUpDownconf.TabStop = false;
+            this.toolTip.SetToolTip(this.numericUpDownconf, "Range is 0 > 1. The lower, the more accepting the voice recognition is. \r\nHowever" +
+        ", this may cause the wrong phrases to be picked up as a command.\r\nDefault = 0.9\r" +
+        "\n");
+            this.numericUpDownconf.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            65536});
+            this.numericUpDownconf.ValueChanged += new System.EventHandler(this.numericUpDownconf_ValueChanged);
+            // 
+            // speechlabel
+            // 
+            this.speechlabel.AutoSize = true;
+            this.speechlabel.Enabled = false;
+            this.speechlabel.Location = new System.Drawing.Point(6, 47);
+            this.speechlabel.Name = "speechlabel";
+            this.speechlabel.Size = new System.Drawing.Size(78, 13);
+            this.speechlabel.TabIndex = 22;
+            this.speechlabel.Text = "Voice Disabled";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Confidence:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.labelSettingsRed);
+            this.groupBox2.Controls.Add(this.buttonSettingSwitch);
+            this.groupBox2.Controls.Add(this.numericUpDownSettingsRed);
+            this.groupBox2.Controls.Add(this.labelSettingsBlue);
+            this.groupBox2.Controls.Add(this.labellabelSettingsGreen);
+            this.groupBox2.Controls.Add(this.numericUpDownSettingsBlue);
+            this.groupBox2.Controls.Add(this.numericUpDownSettingsGreen);
+            this.groupBox2.Location = new System.Drawing.Point(7, 35);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(122, 118);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Color Correction";
             // 
             // labelSettingsRed
             // 
             this.labelSettingsRed.AutoSize = true;
-            this.labelSettingsRed.Location = new System.Drawing.Point(7, 40);
+            this.labelSettingsRed.Location = new System.Drawing.Point(6, 16);
             this.labelSettingsRed.Name = "labelSettingsRed";
             this.labelSettingsRed.Size = new System.Drawing.Size(30, 13);
             this.labelSettingsRed.TabIndex = 6;
             this.labelSettingsRed.Text = "Red:";
             // 
-            // numericUpDownSettingsBlue
+            // buttonSettingSwitch
             // 
-            this.numericUpDownSettingsBlue.Location = new System.Drawing.Point(52, 85);
-            this.numericUpDownSettingsBlue.Name = "numericUpDownSettingsBlue";
-            this.numericUpDownSettingsBlue.Size = new System.Drawing.Size(59, 20);
-            this.numericUpDownSettingsBlue.TabIndex = 5;
-            this.numericUpDownSettingsBlue.ValueChanged += new System.EventHandler(this.numericUpDownSettingsBlue_ValueChanged);
-            // 
-            // numericUpDownSettingsGreen
-            // 
-            this.numericUpDownSettingsGreen.Location = new System.Drawing.Point(52, 59);
-            this.numericUpDownSettingsGreen.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDownSettingsGreen.Name = "numericUpDownSettingsGreen";
-            this.numericUpDownSettingsGreen.Size = new System.Drawing.Size(59, 20);
-            this.numericUpDownSettingsGreen.TabIndex = 4;
-            this.numericUpDownSettingsGreen.ValueChanged += new System.EventHandler(this.numericUpDownSettingsGreen_ValueChanged);
+            this.buttonSettingSwitch.Location = new System.Drawing.Point(9, 92);
+            this.buttonSettingSwitch.Name = "buttonSettingSwitch";
+            this.buttonSettingSwitch.Size = new System.Drawing.Size(107, 21);
+            this.buttonSettingSwitch.TabIndex = 9;
+            this.buttonSettingSwitch.Text = "Additive Active";
+            this.buttonSettingSwitch.UseVisualStyleBackColor = true;
+            this.buttonSettingSwitch.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // numericUpDownSettingsRed
             // 
-            this.numericUpDownSettingsRed.Location = new System.Drawing.Point(52, 33);
+            this.numericUpDownSettingsRed.Location = new System.Drawing.Point(54, 14);
             this.numericUpDownSettingsRed.Maximum = new decimal(new int[] {
             255,
             0,
@@ -250,6 +304,45 @@
             this.numericUpDownSettingsRed.Size = new System.Drawing.Size(59, 20);
             this.numericUpDownSettingsRed.TabIndex = 3;
             this.numericUpDownSettingsRed.ValueChanged += new System.EventHandler(this.numericUpDownSettingsRed_ValueChanged);
+            // 
+            // labelSettingsBlue
+            // 
+            this.labelSettingsBlue.AutoSize = true;
+            this.labelSettingsBlue.Location = new System.Drawing.Point(6, 68);
+            this.labelSettingsBlue.Name = "labelSettingsBlue";
+            this.labelSettingsBlue.Size = new System.Drawing.Size(31, 13);
+            this.labelSettingsBlue.TabIndex = 8;
+            this.labelSettingsBlue.Text = "Blue:";
+            // 
+            // labellabelSettingsGreen
+            // 
+            this.labellabelSettingsGreen.AutoSize = true;
+            this.labellabelSettingsGreen.Location = new System.Drawing.Point(6, 42);
+            this.labellabelSettingsGreen.Name = "labellabelSettingsGreen";
+            this.labellabelSettingsGreen.Size = new System.Drawing.Size(39, 13);
+            this.labellabelSettingsGreen.TabIndex = 7;
+            this.labellabelSettingsGreen.Text = "Green:";
+            // 
+            // numericUpDownSettingsBlue
+            // 
+            this.numericUpDownSettingsBlue.Location = new System.Drawing.Point(54, 66);
+            this.numericUpDownSettingsBlue.Name = "numericUpDownSettingsBlue";
+            this.numericUpDownSettingsBlue.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDownSettingsBlue.TabIndex = 5;
+            this.numericUpDownSettingsBlue.ValueChanged += new System.EventHandler(this.numericUpDownSettingsBlue_ValueChanged);
+            // 
+            // numericUpDownSettingsGreen
+            // 
+            this.numericUpDownSettingsGreen.Location = new System.Drawing.Point(54, 40);
+            this.numericUpDownSettingsGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownSettingsGreen.Name = "numericUpDownSettingsGreen";
+            this.numericUpDownSettingsGreen.Size = new System.Drawing.Size(59, 20);
+            this.numericUpDownSettingsGreen.TabIndex = 4;
+            this.numericUpDownSettingsGreen.ValueChanged += new System.EventHandler(this.numericUpDownSettingsGreen_ValueChanged);
             // 
             // buttonSettingsNameSave
             // 
@@ -267,6 +360,41 @@
             this.textBoxSettingsName.Name = "textBoxSettingsName";
             this.textBoxSettingsName.Size = new System.Drawing.Size(170, 20);
             this.textBoxSettingsName.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonaudioOff);
+            this.groupBox1.Controls.Add(this.radioButtonaudioOn);
+            this.groupBox1.Location = new System.Drawing.Point(12, 234);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(93, 37);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Audio Control";
+            // 
+            // radioButtonaudioOff
+            // 
+            this.radioButtonaudioOff.AutoSize = true;
+            this.radioButtonaudioOff.Checked = true;
+            this.radioButtonaudioOff.Location = new System.Drawing.Point(51, 14);
+            this.radioButtonaudioOff.Name = "radioButtonaudioOff";
+            this.radioButtonaudioOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonaudioOff.TabIndex = 1;
+            this.radioButtonaudioOff.TabStop = true;
+            this.radioButtonaudioOff.Text = "Off";
+            this.radioButtonaudioOff.UseVisualStyleBackColor = true;
+            this.radioButtonaudioOff.CheckedChanged += new System.EventHandler(this.radioButtonaudioOff_CheckedChanged);
+            // 
+            // radioButtonaudioOn
+            // 
+            this.radioButtonaudioOn.AutoSize = true;
+            this.radioButtonaudioOn.Location = new System.Drawing.Point(6, 14);
+            this.radioButtonaudioOn.Name = "radioButtonaudioOn";
+            this.radioButtonaudioOn.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonaudioOn.TabIndex = 0;
+            this.radioButtonaudioOn.Text = "On";
+            this.radioButtonaudioOn.UseVisualStyleBackColor = true;
+            this.radioButtonaudioOn.CheckedChanged += new System.EventHandler(this.radioButtonaudioOn_CheckedChanged);
             // 
             // tabPage3
             // 
@@ -954,21 +1082,12 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // speechlabel
-            // 
-            this.speechlabel.AutoSize = true;
-            this.speechlabel.Location = new System.Drawing.Point(137, 278);
-            this.speechlabel.Name = "speechlabel";
-            this.speechlabel.Size = new System.Drawing.Size(110, 13);
-            this.speechlabel.TabIndex = 22;
-            this.speechlabel.Text = "Waiting For Speech...";
-            // 
             // Mainview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 293);
-            this.Controls.Add(this.speechlabel);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControlDevice);
             this.Controls.Add(this.buttonRefreshList);
             this.Controls.Add(this.checkedListBoxDevices);
@@ -983,9 +1102,16 @@
             this.Resize += new System.EventHandler(this.Mainview_Resize);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBoxVoice.ResumeLayout(false);
+            this.groupBoxVoice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsBlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsGreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsRed)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBoxAdvanced.ResumeLayout(false);
@@ -1015,7 +1141,6 @@
             this.tabControlDevice.ResumeLayout(false);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1096,6 +1221,14 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label speechlabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonaudioOff;
+        private System.Windows.Forms.RadioButton radioButtonaudioOn;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxVoice;
+        private System.Windows.Forms.NumericUpDown numericUpDownconf;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelConfidence;
     }
 }
 

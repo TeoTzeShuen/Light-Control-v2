@@ -27,8 +27,9 @@ namespace WifiLedController
         private ScreenProcessor sp = new ScreenProcessor();
         private XmlSettings xmlSettings = new XmlSettings();
 
-        private static SpeechRecognitionEngine engine; 
+        private static SpeechRecognitionEngine engine;
 
+        private decimal confidenceVal;
         public Mainview()
         {
             InitializeComponent();
@@ -42,6 +43,15 @@ namespace WifiLedController
             updateCalculations();
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.WorkerReportsProgress = true;
+
+        }
+
+        private void Mainview_Load(object sender, EventArgs e)
+        {
+            //set defaults
+            radioButtonaudioOff.Checked = true;
+            radioButtonaudioOn.Checked = false;
+            confidenceVal = 0.90m;
         }
 
         private void SetupAmbianceColorTuningSettings()
@@ -1089,78 +1099,23 @@ namespace WifiLedController
 
         private void onToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOn();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
-                    Task.Factory.StartNew(() => led.TurnOn());
-                }
-            }
-
-            //switch which button is active
-            buttonOff.Enabled = true;
-            buttonOn.Enabled = false;
+            SwitchOn();
         }
 
         private void offToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ambiantMode = false;
-
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOff();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    Task.Factory.StartNew(() => led.TurnOff());
-                }
-            }
-
-            buttonOff.Enabled = true;
-            buttonOn.Enabled = false;
+            ambientOff();
+            SwitchOff();
         }
 
         private void onToolStripMenuItemAmbience_Click(object sender, EventArgs e)
         {
-            checkBoxAmbianceMode.Checked = true;
-
-            if (checkBoxAmbianceMode.Checked)
-            {
-                ambiantMode = true;
-                if (!backgroundWorker1.IsBusy)
-                {
-                    backgroundWorker1.RunWorkerAsync();
-                }
-            }
-            else
-            {
-                ambiantMode = false;
-            }
+            ambientOn();
         }
 
         private void offToolStripMenuItemAmbience_Click(object sender, EventArgs e)
         {
-            checkBoxAmbianceMode.Checked = false;
-
-            if (checkBoxAmbianceMode.Checked)
-            {
-                ambiantMode = true;
-                if (!backgroundWorker1.IsBusy)
-                {
-                    backgroundWorker1.RunWorkerAsync();
-                }
-            }
-            else
-            {
-
-            }
+            ambientOff();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1168,46 +1123,101 @@ namespace WifiLedController
             this.Close();
         }
 
-        private void Mainview_Load(object sender, EventArgs e)
+        
+        public void speechReg()
         {
             engine=new SpeechRecognitionEngine();
             engine.SetInputToDefaultAudioDevice();
             
             Choices sList = new Choices();
-            sList.Add(new string[]{ "on lights", "off lights", "ambience on", "ambience off"});
+            sList.Add(new string[] {
+                "on lights", "lights on", "switch on lights",
+                "off lights", "lights off", "switch off lights",
+                "on ambience", "ambience on", "switch on ambience",
+                "off ambience", "ambience off","switch off ambience",
+                "switch off audio control"
+            });
+                
             Grammar gr = new Grammar(new GrammarBuilder(sList));
 
             engine.LoadGrammar(gr);
 
             engine.RecognizeAsync(RecognizeMode.Multiple);
             engine.SpeechRecognized += rec;
-
-            
         }
 
         private void rec (object sender, SpeechRecognizedEventArgs result)
         {
-            speechlabel.Text = result.Result.Text + ", Confidence: " + result.Result.Confidence;
-
-            if (result.Result.Text.Contains("on lights"))
+            if (result.Result.Confidence > Convert.ToSingle(confidenceVal))
             {
-                SwitchOn();
+                speechlabel.Text = "You Said: " + result.Result.Text;
+                labelConfidence.Text = "@conf: " + result.Result.Confidence.ToString();
+                this.Text = "Led Controller";
+                //if or statements are short-circuit evaluators, so maybe rearrange these next time to the most common first
+                if (result.Result.Text == "lights on" || result.Result.Text == "on lights" || result.Result.Text == "switch on lights")
+                {
+                    SwitchOn();
+                }
+
+                if (result.Result.Text == "lights off" || result.Result.Text == "off lights" || result.Result.Text == "switch off lights")
+                {
+                    ambientOff();
+                    System.Threading.Thread.Sleep(200);
+                    SwitchOff();
+                }
+
+                if (result.Result.Text == ("ambience on") || result.Result.Text == "on ambience" || result.Result.Text == "switch on ambience")
+                {
+                    ambientOn();
+                }
+
+                if (result.Result.Text == ("ambience off") || result.Result.Text == "off ambience" || result.Result.Text == "switch off ambience")
+                {
+                    ambientOff();
+                }
+
+                if (result.Result.Text == "switch off audio control")
+                {
+                    engine.RecognizeAsyncCancel();
+                    speechlabel.Enabled = false;
+                    speechlabel.Text = "Voice Disabled";
+                }
             }
 
-            if (result.Result.Text.Contains("off lights"))
+            else
             {
-                SwitchOff();
-            }
+                speechlabel.Text = "You Said(?): " + result.Result.Text;
+                labelConfidence.Text = "@conf: " + result.Result.Confidence.ToString();
+                this.Text = "Confidence too low! - Try adjusting the settings";
 
-            if (result.Result.Text.Contains("ambience on"))
-            {
-                ambientOn();
             }
+            
+        }
 
-            if (result.Result.Text.Contains("ambience off"))
+        private void radioButtonaudioOn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonaudioOn.Checked == true) //just checking
             {
-                ambientOff();
+                speechReg();
+                speechlabel.Enabled = true;
+                speechlabel.Text = "Voice Enabled, waiting...";
             }
+            
+        }
+
+        private void radioButtonaudioOff_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonaudioOff.Checked == true) //just checking
+            {
+                engine.RecognizeAsyncCancel();
+                speechlabel.Enabled = false;
+                speechlabel.Text = "Voice Disabled";
+            }
+        }
+
+        private void numericUpDownconf_ValueChanged(object sender, EventArgs e)
+        {
+            confidenceVal = Convert.ToDecimal(numericUpDownconf.Text);
         }
     }
 }
