@@ -102,6 +102,7 @@
             this.offToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.speechlabel = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsGreen)).BeginInit();
@@ -953,11 +954,21 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // speechlabel
+            // 
+            this.speechlabel.AutoSize = true;
+            this.speechlabel.Location = new System.Drawing.Point(137, 278);
+            this.speechlabel.Name = "speechlabel";
+            this.speechlabel.Size = new System.Drawing.Size(35, 13);
+            this.speechlabel.TabIndex = 22;
+            this.speechlabel.Text = "label7";
+            // 
             // Mainview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 293);
+            this.Controls.Add(this.speechlabel);
             this.Controls.Add(this.tabControlDevice);
             this.Controls.Add(this.buttonRefreshList);
             this.Controls.Add(this.checkedListBoxDevices);
@@ -968,6 +979,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Led Controller";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Mainview_FormClosing);
+            this.Load += new System.EventHandler(this.Mainview_Load);
             this.Resize += new System.EventHandler(this.Mainview_Resize);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -1003,6 +1015,7 @@
             this.tabControlDevice.ResumeLayout(false);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1082,6 +1095,7 @@
         private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItemAmbience;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label speechlabel;
     }
 }
 

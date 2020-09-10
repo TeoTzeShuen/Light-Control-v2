@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,8 @@ namespace WifiLedController
         private int DummyCount = 0;
         private ScreenProcessor sp = new ScreenProcessor();
         private XmlSettings xmlSettings = new XmlSettings();
+
+        private static SpeechRecognitionEngine engine; 
 
         public Mainview()
         {
@@ -129,6 +133,44 @@ namespace WifiLedController
             receive.Send(bytestring, bytestring.Length, new IPEndPoint(IPAddress.Broadcast, 48899));
 
             receive.BeginReceive(new AsyncCallback(response), null);
+        }
+
+        public void SwitchOn()
+        {
+            if (activeLeds.Count < 1 && selectedLed != null)
+            {
+                selectedLed.TurnOn();
+            }
+            else
+            {
+                foreach (WifiLed led in activeLeds)
+                {
+                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
+                    Task.Factory.StartNew(() => led.TurnOn());
+                }
+            }
+
+            //switch which button is active
+            buttonOff.Enabled = true;
+            buttonOn.Enabled = false;
+        }
+
+        public void SwitchOff()
+        {
+            if (activeLeds.Count < 1 && selectedLed != null)
+            {
+                selectedLed.TurnOff();
+            }
+            else
+            {
+                foreach (WifiLed led in activeLeds)
+                {
+                    Task.Factory.StartNew(() => led.TurnOff());
+                }
+            }
+
+            buttonOff.Enabled = false;
+            buttonOn.Enabled = true;
         }
 
         private async void response(IAsyncResult res)
@@ -487,41 +529,12 @@ namespace WifiLedController
 
         private void buttonOn_Click(object sender, EventArgs e)
         {
-            //send turn on command to appopriate leds
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOn();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    //Debug.WriteLine("[ButtonOn] Turning on Led: {0}",led);
-                    Task.Factory.StartNew(() => led.TurnOn());
-                }
-            }
-
-            //switch which button is active
-            buttonOff.Enabled = true;
-            buttonOn.Enabled = false;
+            SwitchOn();
         }
 
         private void buttonOff_Click(object sender, EventArgs e)
         {
-            if (activeLeds.Count < 1 && selectedLed != null)
-            {
-                selectedLed.TurnOff();
-            }
-            else
-            {
-                foreach (WifiLed led in activeLeds)
-                {
-                    Task.Factory.StartNew(() => led.TurnOff());
-                }
-            }
-
-            buttonOff.Enabled = false;
-            buttonOn.Enabled = true;
+            SwitchOff();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -1117,6 +1130,34 @@ namespace WifiLedController
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Mainview_Load(object sender, EventArgs e)
+        {
+            engine=new SpeechRecognitionEngine();
+            engine.SetInputToDefaultAudioDevice();
+
+            engine.LoadGrammar((new DictationGrammar()));
+
+            engine.RecognizeAsync(RecognizeMode.Multiple);
+            engine.SpeechRecognized += rec;
+
+            
+        }
+
+        private void rec (object sender, SpeechRecognizedEventArgs result)
+        {
+            speechlabel.Text = result.Result.Text + ", Confidence - " + result.Result.Confidence;
+
+            if (result.Result.Text.Contains("on lights") || result.Result.Text.Contains("switch on") || result.Result.Text.Contains("turn on lights"))
+            {
+                SwitchOn();
+            }
+
+            if (result.Result.Text.Contains("switch off lights") || result.Result.Text.Contains("switch off") || result.Result.Text.Contains("off lights"))
+            {
+                SwitchOff();
+            }
         }
     }
 }
