@@ -83,6 +83,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="XmlSettings.cs" />
     <Compile Include="ScreenProcessor.cs" />
     <Compile Include="DisplayValuePair.cs" />
@@ -112,6 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="WifiLedController_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

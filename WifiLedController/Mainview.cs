@@ -31,6 +31,7 @@ namespace WifiLedController
 
         private decimal confidenceVal;
         private int brightnessVal;
+        private bool AudioControlEnabled;
         public Mainview()
         {
             InitializeComponent();
@@ -45,6 +46,8 @@ namespace WifiLedController
             this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.WorkerReportsProgress = true;
 
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
         }
 
         private void Mainview_Load(object sender, EventArgs e)
@@ -56,6 +59,14 @@ namespace WifiLedController
             brightnessVal = 100;
             trackBarBrightness.Value = 100;
             numericUpDownBrightness.Value = 100;
+
+            confidenceVal = settings.Default.ConfValue;
+            numericUpDownconf.Value = settings.Default.ConfValue;
+            AudioControlEnabled = settings.Default.audioControl;
+            if(AudioControlEnabled == true)
+            {
+                radioButtonaudioOn.Checked = true;
+            }
         }
 
         private void SetupAmbianceColorTuningSettings()
@@ -584,6 +595,8 @@ namespace WifiLedController
 
         private void buttonOff_Click(object sender, EventArgs e)
         {
+            ambientOff();
+            System.Threading.Thread.Sleep(200);
             SwitchOff();
         }
 
@@ -780,7 +793,7 @@ namespace WifiLedController
             float green = (float) numericUpDownSettingsGreen.Value;
             float blue = (float) numericUpDownSettingsBlue.Value;
 
-            bool limiterActive = LimiterActive; //Local copy so we do activate the limiter only one update
+            bool limiterActive = LimiterActive; //Local copy so we activate the limiter only one update
             bool limiterRate = LimiterUpdateRate;
             decimal updateRate = numericUpDownAdvancedUpdateNumber.Value;
             if (!limiterRate)
@@ -788,12 +801,12 @@ namespace WifiLedController
                 updateRate = (1.0m / numericUpDownAdvancedUpdateNumber.Value);
             }
 
-            updateRate *= 1000; //Convert seconds to milliseconds
+            updateRate *= 1000; //seconds to milliseconds
             this.Invoke((MethodInvoker) (() => buttonAdvancedUpdateSettings.Visible = true));
             //crunch functions in the background
             while (ambiantMode || drawRectangle || mouseTracking)
             {
-                //reset and Start timer so we can track time spend in loops
+                //reset and Start timer so we can track time spent in loops
                 functionTime.Reset();
                 functionTime.Start();
 
@@ -943,7 +956,16 @@ namespace WifiLedController
             drawRectangle = false;
             mouseTracking = false;
 
+            //write XML settings
             xmlSettings.Save();
+
+            //write values for settings
+            settings.Default.ConfValue = numericUpDownconf.Value;
+            settings.Default.audioControl = AudioControlEnabled;
+
+            //write settings file
+            settings.Default.Save();
+            
         }
 
         private void buttonAddDummy_Click_1(object sender, EventArgs e)
@@ -1109,6 +1131,7 @@ namespace WifiLedController
         private void offToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ambientOff();
+            System.Threading.Thread.Sleep(200);
             SwitchOff();
         }
 
@@ -1206,6 +1229,7 @@ namespace WifiLedController
                 speechlabel.Enabled = true;
                 speechlabel.Text = "Voice Enabled, waiting...";
                 labelConfidence.Show();
+                AudioControlEnabled = true;
             }
             
         }
@@ -1218,6 +1242,7 @@ namespace WifiLedController
                 speechlabel.Enabled = false;
                 speechlabel.Text = "Voice Disabled";
                 labelConfidence.Hide();
+                AudioControlEnabled = false;
             }
         }
 
@@ -1241,5 +1266,14 @@ namespace WifiLedController
             updateActiveWifiLeds();
         }
 
+        private void radioButtonLightMode_CheckedChanged(object sender, EventArgs e)
+        {
+            this.BackColor = default(Color);
+            checkedListBoxDevices.BackColor = default(Color);
+            tabPage1.BackColor = default(Color);
+            tabPage2.BackColor = default(Color);
+            tabPage3.BackColor = default(Color);
+            tabPage4.BackColor = default(Color);
+        }
     }
 }

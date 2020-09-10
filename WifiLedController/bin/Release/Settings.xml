@@ -13,7 +13,7 @@
   </AmbianceSettings>
   <AmbianceColorTuningSettings>
     <Red>0</Red>
-    <Green>255</Green>
+    <Green>0</Green>
     <Blue>0</Blue>
     <Mode>Additive</Mode>
   </AmbianceColorTuningSettings>

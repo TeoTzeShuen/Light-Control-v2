@@ -35,6 +35,10 @@
             this.buttonRefreshList = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButtonCustomTheme = new System.Windows.Forms.RadioButton();
+            this.radioButtonDarkMode = new System.Windows.Forms.RadioButton();
+            this.radioButtonLightMode = new System.Windows.Forms.RadioButton();
             this.groupBoxVoice = new System.Windows.Forms.GroupBox();
             this.labelConfidence = new System.Windows.Forms.Label();
             this.numericUpDownconf = new System.Windows.Forms.NumericUpDown();
@@ -115,6 +119,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBoxVoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -180,6 +185,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.groupBoxVoice);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.buttonSettingsNameSave);
@@ -190,7 +197,52 @@
             this.tabPage4.Size = new System.Drawing.Size(264, 237);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Settings";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButtonCustomTheme);
+            this.groupBox3.Controls.Add(this.radioButtonDarkMode);
+            this.groupBox3.Controls.Add(this.radioButtonLightMode);
+            this.groupBox3.Location = new System.Drawing.Point(135, 35);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(123, 118);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "App Theme";
+            // 
+            // radioButtonCustomTheme
+            // 
+            this.radioButtonCustomTheme.AutoSize = true;
+            this.radioButtonCustomTheme.Location = new System.Drawing.Point(7, 62);
+            this.radioButtonCustomTheme.Name = "radioButtonCustomTheme";
+            this.radioButtonCustomTheme.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonCustomTheme.TabIndex = 2;
+            this.radioButtonCustomTheme.TabStop = true;
+            this.radioButtonCustomTheme.Text = "Light Color";
+            this.radioButtonCustomTheme.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDarkMode
+            // 
+            this.radioButtonDarkMode.AutoSize = true;
+            this.radioButtonDarkMode.Location = new System.Drawing.Point(7, 39);
+            this.radioButtonDarkMode.Name = "radioButtonDarkMode";
+            this.radioButtonDarkMode.Size = new System.Drawing.Size(49, 17);
+            this.radioButtonDarkMode.TabIndex = 1;
+            this.radioButtonDarkMode.TabStop = true;
+            this.radioButtonDarkMode.Text = "Dark";
+            this.radioButtonDarkMode.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLightMode
+            // 
+            this.radioButtonLightMode.AutoSize = true;
+            this.radioButtonLightMode.Location = new System.Drawing.Point(7, 16);
+            this.radioButtonLightMode.Name = "radioButtonLightMode";
+            this.radioButtonLightMode.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonLightMode.TabIndex = 0;
+            this.radioButtonLightMode.TabStop = true;
+            this.radioButtonLightMode.Text = "Light";
+            this.radioButtonLightMode.UseVisualStyleBackColor = true;
+            this.radioButtonLightMode.CheckedChanged += new System.EventHandler(this.radioButtonLightMode_CheckedChanged);
             // 
             // groupBoxVoice
             // 
@@ -277,6 +329,7 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Color Correction";
+            this.toolTip.SetToolTip(this.groupBox2, "Color Adjustment for ambience");
             // 
             // labelSettingsRed
             // 
@@ -1147,6 +1200,8 @@
             this.Resize += new System.EventHandler(this.Mainview_Resize);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBoxVoice.ResumeLayout(false);
             this.groupBoxVoice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).EndInit();
@@ -1279,6 +1334,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDownBrightness;
         private System.Windows.Forms.TrackBar trackBarBrightness;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioButtonCustomTheme;
+        private System.Windows.Forms.RadioButton radioButtonDarkMode;
+        private System.Windows.Forms.RadioButton radioButtonLightMode;
     }
 }
 
