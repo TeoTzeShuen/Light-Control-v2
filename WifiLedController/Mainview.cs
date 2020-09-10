@@ -173,6 +173,42 @@ namespace WifiLedController
             buttonOn.Enabled = true;
         }
 
+        public void ambientOn()
+        {
+            checkBoxAmbianceMode.Checked = true;
+
+            if (checkBoxAmbianceMode.Checked)
+            {
+                ambiantMode = true;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                ambiantMode = false;
+            }
+        }
+
+        public void ambientOff()
+        {
+            checkBoxAmbianceMode.Checked = false;
+
+            if (checkBoxAmbianceMode.Checked)
+            {
+                ambiantMode = true;
+                if (!backgroundWorker1.IsBusy)
+                {
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                ambiantMode = false;
+            }
+        }
+
         private async void response(IAsyncResult res)
         {
             IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, multicastPort);
@@ -1136,8 +1172,12 @@ namespace WifiLedController
         {
             engine=new SpeechRecognitionEngine();
             engine.SetInputToDefaultAudioDevice();
+            
+            Choices sList = new Choices();
+            sList.Add(new string[]{ "on lights", "off lights", "ambience on", "ambience off"});
+            Grammar gr = new Grammar(new GrammarBuilder(sList));
 
-            engine.LoadGrammar((new DictationGrammar()));
+            engine.LoadGrammar(gr);
 
             engine.RecognizeAsync(RecognizeMode.Multiple);
             engine.SpeechRecognized += rec;
@@ -1147,16 +1187,26 @@ namespace WifiLedController
 
         private void rec (object sender, SpeechRecognizedEventArgs result)
         {
-            speechlabel.Text = result.Result.Text + ", Confidence - " + result.Result.Confidence;
+            speechlabel.Text = result.Result.Text + ", Confidence: " + result.Result.Confidence;
 
-            if (result.Result.Text.Contains("on lights") || result.Result.Text.Contains("switch on") || result.Result.Text.Contains("turn on lights"))
+            if (result.Result.Text.Contains("on lights"))
             {
                 SwitchOn();
             }
 
-            if (result.Result.Text.Contains("switch off lights") || result.Result.Text.Contains("switch off") || result.Result.Text.Contains("off lights"))
+            if (result.Result.Text.Contains("off lights"))
             {
                 SwitchOff();
+            }
+
+            if (result.Result.Text.Contains("ambience on"))
+            {
+                ambientOn();
+            }
+
+            if (result.Result.Text.Contains("ambience off"))
+            {
+                ambientOff();
             }
         }
     }
