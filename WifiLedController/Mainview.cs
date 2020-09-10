@@ -30,6 +30,7 @@ namespace WifiLedController
         private static SpeechRecognitionEngine engine;
 
         private decimal confidenceVal;
+        private int brightnessVal;
         public Mainview()
         {
             InitializeComponent();
@@ -52,6 +53,9 @@ namespace WifiLedController
             radioButtonaudioOff.Checked = true;
             radioButtonaudioOn.Checked = false;
             confidenceVal = 0.90m;
+            brightnessVal = 100;
+            trackBarBrightness.Value = 100;
+            numericUpDownBrightness.Value = 100;
         }
 
         private void SetupAmbianceColorTuningSettings()
@@ -326,8 +330,8 @@ namespace WifiLedController
         {
             if (activeLeds.Count < 1 && selectedLed != null)
             {
-                selectedLed.UpdateRGBWW((byte) numericUpDownRed.Value, (byte) numericUpDownGreen.Value,
-                    (byte) numericUpDownBlue.Value, (byte) numericUpDownWarmWhite.Value);
+                selectedLed.UpdateRGBWW((byte) (numericUpDownRed.Value * brightnessVal / 100), (byte) (numericUpDownGreen.Value * brightnessVal / 100),
+                    (byte) (numericUpDownBlue.Value * brightnessVal / 100), (byte) (numericUpDownWarmWhite.Value * brightnessVal / 100));
             }
             else
             {
@@ -1123,7 +1127,7 @@ namespace WifiLedController
             this.Close();
         }
 
-        
+        // speech reg ********
         public void speechReg()
         {
             engine=new SpeechRecognitionEngine();
@@ -1193,7 +1197,7 @@ namespace WifiLedController
             }
             
         }
-
+        //end
         private void radioButtonaudioOn_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonaudioOn.Checked == true) //just checking
@@ -1201,6 +1205,7 @@ namespace WifiLedController
                 speechReg();
                 speechlabel.Enabled = true;
                 speechlabel.Text = "Voice Enabled, waiting...";
+                labelConfidence.Show();
             }
             
         }
@@ -1212,6 +1217,7 @@ namespace WifiLedController
                 engine.RecognizeAsyncCancel();
                 speechlabel.Enabled = false;
                 speechlabel.Text = "Voice Disabled";
+                labelConfidence.Hide();
             }
         }
 
@@ -1219,5 +1225,21 @@ namespace WifiLedController
         {
             confidenceVal = Convert.ToDecimal(numericUpDownconf.Text);
         }
+
+        //brightness stuff
+        private void trackBarBrightness_ValueChanged(object sender, EventArgs e)
+        {
+            numericUpDownBrightness.Value = trackBarBrightness.Value;
+            brightnessVal = trackBarBrightness.Value;
+            updateActiveWifiLeds();
+        }
+
+        private void numericUpDownBrightness_ValueChanged(object sender, EventArgs e)
+        {
+            trackBarBrightness.Value = Convert.ToInt32(numericUpDownBrightness.Value);
+            brightnessVal = trackBarBrightness.Value;
+            updateActiveWifiLeds();
+        }
+
     }
 }
