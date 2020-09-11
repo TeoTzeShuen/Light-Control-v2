@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WifiLedController.exe" size="373184">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WifiLedController.exe" size="494016">
       <assemblyIdentity name="WifiLedController" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Sb/cuWrGb4QRHVRvKZiSbVMTng0a7ig6DcdOCv4CuE8=</dsig:DigestValue>
+        <dsig:DigestValue>7IcQHKpXh25lWGyKXonm0QTZ9F1NjxZWFcUdc8x5GIU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,13 +63,13 @@
       <dsig:DigestValue>DkQblqwgqLbr9jmjpkrHwtCfmcWvTjHU2Ka9Dgtyyh8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="WifiLedController.exe.config" size="222">
+  <file name="WifiLedController.exe.config" size="1719">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>G9Dmdj3QejXaxMhWOdhEsvbam8CDsYKeuEzBdB3cRJI=</dsig:DigestValue>
+      <dsig:DigestValue>i9EdTXydqLGaEuJou4alK+/nWkWtO7mA46WS7Br+gNM=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
