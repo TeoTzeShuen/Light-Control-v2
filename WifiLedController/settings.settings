@@ -8,5 +8,11 @@
     <Setting Name="audioControl" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="themeEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="themeSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">light</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

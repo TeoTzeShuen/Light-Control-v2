@@ -46,5 +46,29 @@ namespace WifiLedController {
                 this["audioControl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool themeEnabled {
+            get {
+                return ((bool)(this["themeEnabled"]));
+            }
+            set {
+                this["themeEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("light")]
+        public string themeSetting {
+            get {
+                return ((string)(this["themeSetting"]));
+            }
+            set {
+                this["themeSetting"] = value;
+            }
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace WifiLedController
         private decimal confidenceVal;
         private int brightnessVal;
         private bool AudioControlEnabled;
+        
         public Mainview()
         {
             InitializeComponent();
@@ -62,6 +63,21 @@ namespace WifiLedController
             if(AudioControlEnabled == true)
             {
                 radioButtonaudioOn.Checked = true;
+            }
+
+            if (settings.Default.themeEnabled == true)
+            {
+                checkBoxTheme.Checked = true;
+            }
+
+            if (settings.Default.themeSetting == "light")
+            {
+                radioButtonLightMode.Checked = true;
+            }
+
+            if (settings.Default.themeSetting == "dark")
+            {
+                radioButtonDarkMode.Checked = true;
             }
         }
 
@@ -1264,26 +1280,64 @@ namespace WifiLedController
             tabPage4.ForeColor = Color.Black;
             groupBox1.ForeColor = Color.Black;
             groupBox2.ForeColor = Color.Black;
-            groupBox3.ForeColor = Color.Black;
+            groupBoxThemes.ForeColor = Color.Black;
+            groupBoxAdvanced.ForeColor = Color.Black;
+            checkedListBoxDevices.BackColor = DefaultBackColor;
+            settings.Default.themeSetting = "light";
+
         }
 
         private void radioButtonDarkMode_CheckedChanged(object sender, EventArgs e)
         {
-            this.ForeColor = Color.AliceBlue; 
+            this.ForeColor = Color.DarkBlue; 
             this.BackColor = Color.Black;
-            tabPage1.ForeColor = Color.AliceBlue;
-            tabPage2.ForeColor = Color.AliceBlue;
-            tabPage3.ForeColor = Color.AliceBlue;
-            tabPage4.ForeColor = Color.AliceBlue;
+            tabPage1.ForeColor = Color.DarkBlue;
+            tabPage2.ForeColor = Color.DarkBlue;
+            tabPage3.ForeColor = Color.DarkBlue;
+            tabPage4.ForeColor = Color.DarkBlue;
             tabPage1.BackColor = Color.Black;
             tabPage2.BackColor = Color.Black;
             tabPage3.BackColor = Color.Black;
             tabPage4.BackColor = Color.Black;
             groupBox1.ForeColor = Color.AliceBlue;
             groupBox2.ForeColor = Color.AliceBlue;
-            groupBox3.ForeColor = Color.AliceBlue;
+            groupBoxThemes.ForeColor = Color.AliceBlue;
             groupBoxAdvanced.ForeColor = Color.AliceBlue;
+            checkedListBoxDevices.BackColor = Color.DarkBlue;
+            settings.Default.themeSetting = "dark";
 
+        }
+
+        private void checkBoxTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxTheme.Checked)
+            {
+                groupBoxThemes.Enabled = true;
+            }
+            else
+            {
+                groupBoxThemes.Enabled = false;
+            }
+        }
+
+        private void onToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            speechReg();
+            speechlabel.Enabled = true;
+            speechlabel.Text = "Enabled, waiting...";
+            labelConfidence.Show();
+            AudioControlEnabled = true;
+            radioButtonaudioOn.Checked = true;
+        }
+
+        private void offToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            engine.RecognizeAsyncCancel();
+            speechlabel.Enabled = false;
+            speechlabel.Text = "Voice Disabled";
+            labelConfidence.Hide();
+            AudioControlEnabled = false;
+            radioButtonaudioOff.Checked = true;
         }
     }
 }
