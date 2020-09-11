@@ -54,11 +54,7 @@ namespace WifiLedController
         {
             //set defaults
             radioButtonaudioOff.Checked = true;
-            radioButtonaudioOn.Checked = false;
             confidenceVal = 0.90m;
-            brightnessVal = 100;
-            trackBarBrightness.Value = 100;
-            numericUpDownBrightness.Value = 100;
 
             confidenceVal = settings.Default.ConfValue;
             numericUpDownconf.Value = settings.Default.ConfValue;
@@ -311,6 +307,7 @@ namespace WifiLedController
 
             //Set all
             //groupBoxCurrentDevice.Text = selectedLed.name;
+
             pictureBox1.BackColor = Color.FromArgb(red, green, blue);
             numericUpDownRed.Value = red;
             redBar.Value = red;
@@ -341,8 +338,8 @@ namespace WifiLedController
         {
             if (activeLeds.Count < 1 && selectedLed != null)
             {
-                selectedLed.UpdateRGBWW((byte) (numericUpDownRed.Value * brightnessVal / 100), (byte) (numericUpDownGreen.Value * brightnessVal / 100),
-                    (byte) (numericUpDownBlue.Value * brightnessVal / 100), (byte) (numericUpDownWarmWhite.Value * brightnessVal / 100));
+                selectedLed.UpdateRGBWW((byte) numericUpDownRed.Value, (byte) numericUpDownGreen.Value,
+                    (byte) numericUpDownBlue.Value, (byte) numericUpDownWarmWhite.Value);
             }
             else
             {
@@ -1177,8 +1174,8 @@ namespace WifiLedController
         {
             if (result.Result.Confidence > Convert.ToSingle(confidenceVal))
             {
-                speechlabel.Text = "You Said: " + result.Result.Text;
-                labelConfidence.Text = "@conf: " + result.Result.Confidence.ToString();
+                speechlabel.Text = result.Result.Text;
+                labelConfidence.Text = "@conf: " + result.Result.Confidence;
                 this.Text = "Led Controller";
                 //if or statements are short-circuit evaluators, so maybe rearrange these next time to the most common first
                 if (result.Result.Text == "lights on" || result.Result.Text == "on lights" || result.Result.Text == "switch on lights")
@@ -1213,8 +1210,8 @@ namespace WifiLedController
 
             else
             {
-                speechlabel.Text = "You Said(?): " + result.Result.Text;
-                labelConfidence.Text = "@conf: " + result.Result.Confidence.ToString();
+                speechlabel.Text = "(?): " + result.Result.Text;
+                labelConfidence.Text = "@conf: " + result.Result.Confidence;
                 this.Text = "Confidence too low! - Try adjusting the settings";
 
             }
@@ -1227,7 +1224,7 @@ namespace WifiLedController
             {
                 speechReg();
                 speechlabel.Enabled = true;
-                speechlabel.Text = "Voice Enabled, waiting...";
+                speechlabel.Text = "Enabled, waiting...";
                 labelConfidence.Show();
                 AudioControlEnabled = true;
             }
@@ -1251,29 +1248,42 @@ namespace WifiLedController
             confidenceVal = Convert.ToDecimal(numericUpDownconf.Text);
         }
 
-        //brightness stuff
-        private void trackBarBrightness_ValueChanged(object sender, EventArgs e)
-        {
-            numericUpDownBrightness.Value = trackBarBrightness.Value;
-            brightnessVal = trackBarBrightness.Value;
-            updateActiveWifiLeds();
-        }
-
-        private void numericUpDownBrightness_ValueChanged(object sender, EventArgs e)
-        {
-            trackBarBrightness.Value = Convert.ToInt32(numericUpDownBrightness.Value);
-            brightnessVal = trackBarBrightness.Value;
-            updateActiveWifiLeds();
-        }
-
         private void radioButtonLightMode_CheckedChanged(object sender, EventArgs e)
         {
             this.BackColor = default(Color);
+            this.ForeColor = Color.Black;
             checkedListBoxDevices.BackColor = default(Color);
+            
             tabPage1.BackColor = default(Color);
             tabPage2.BackColor = default(Color);
             tabPage3.BackColor = default(Color);
             tabPage4.BackColor = default(Color);
+            tabPage1.ForeColor = Color.Black;
+            tabPage2.ForeColor = Color.Black;
+            tabPage3.ForeColor = Color.Black;
+            tabPage4.ForeColor = Color.Black;
+            groupBox1.ForeColor = Color.Black;
+            groupBox2.ForeColor = Color.Black;
+            groupBox3.ForeColor = Color.Black;
+        }
+
+        private void radioButtonDarkMode_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ForeColor = Color.AliceBlue; 
+            this.BackColor = Color.Black;
+            tabPage1.ForeColor = Color.AliceBlue;
+            tabPage2.ForeColor = Color.AliceBlue;
+            tabPage3.ForeColor = Color.AliceBlue;
+            tabPage4.ForeColor = Color.AliceBlue;
+            tabPage1.BackColor = Color.Black;
+            tabPage2.BackColor = Color.Black;
+            tabPage3.BackColor = Color.Black;
+            tabPage4.BackColor = Color.Black;
+            groupBox1.ForeColor = Color.AliceBlue;
+            groupBox2.ForeColor = Color.AliceBlue;
+            groupBox3.ForeColor = Color.AliceBlue;
+            groupBoxAdvanced.ForeColor = Color.AliceBlue;
+
         }
     }
 }

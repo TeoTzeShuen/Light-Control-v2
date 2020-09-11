@@ -88,9 +88,6 @@
             this.trackBarFunctionSpeed = new System.Windows.Forms.TrackBar();
             this.listBoxFunctions = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDownBrightness = new System.Windows.Forms.NumericUpDown();
-            this.trackBarBrightness = new System.Windows.Forms.TrackBar();
             this.buttonOn = new System.Windows.Forms.Button();
             this.buttonRefreshStatus = new System.Windows.Forms.Button();
             this.labelGreen = new System.Windows.Forms.Label();
@@ -118,6 +115,7 @@
             this.offToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label8 = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBoxVoice.SuspendLayout();
@@ -140,8 +138,6 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFunctionSpeed)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrightness)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.redBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).BeginInit();
@@ -200,12 +196,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.radioButtonCustomTheme);
             this.groupBox3.Controls.Add(this.radioButtonDarkMode);
             this.groupBox3.Controls.Add(this.radioButtonLightMode);
+            this.groupBox3.Enabled = false;
             this.groupBox3.Location = new System.Drawing.Point(135, 35);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(123, 118);
+            this.groupBox3.Size = new System.Drawing.Size(123, 196);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "App Theme";
@@ -231,6 +229,7 @@
             this.radioButtonDarkMode.TabStop = true;
             this.radioButtonDarkMode.Text = "Dark";
             this.radioButtonDarkMode.UseVisualStyleBackColor = true;
+            this.radioButtonDarkMode.CheckedChanged += new System.EventHandler(this.radioButtonDarkMode_CheckedChanged);
             // 
             // radioButtonLightMode
             // 
@@ -252,7 +251,7 @@
             this.groupBoxVoice.Controls.Add(this.label7);
             this.groupBoxVoice.Location = new System.Drawing.Point(7, 154);
             this.groupBoxVoice.Name = "groupBoxVoice";
-            this.groupBoxVoice.Size = new System.Drawing.Size(251, 77);
+            this.groupBoxVoice.Size = new System.Drawing.Size(122, 77);
             this.groupBoxVoice.TabIndex = 11;
             this.groupBoxVoice.TabStop = false;
             this.groupBoxVoice.Text = "Voice Control";
@@ -563,7 +562,7 @@
             // labelColorMouse
             // 
             this.labelColorMouse.AutoSize = true;
-            this.labelColorMouse.Location = new System.Drawing.Point(51, 175);
+            this.labelColorMouse.Location = new System.Drawing.Point(28, 175);
             this.labelColorMouse.Name = "labelColorMouse";
             this.labelColorMouse.Size = new System.Drawing.Size(110, 13);
             this.labelColorMouse.TabIndex = 18;
@@ -593,9 +592,9 @@
             // 
             // pictureBoxAdvanced
             // 
-            this.pictureBoxAdvanced.Location = new System.Drawing.Point(154, 142);
+            this.pictureBoxAdvanced.Location = new System.Drawing.Point(138, 142);
             this.pictureBoxAdvanced.Name = "pictureBoxAdvanced";
-            this.pictureBoxAdvanced.Size = new System.Drawing.Size(94, 59);
+            this.pictureBoxAdvanced.Size = new System.Drawing.Size(110, 59);
             this.pictureBoxAdvanced.TabIndex = 2;
             this.pictureBoxAdvanced.TabStop = false;
             // 
@@ -855,9 +854,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.numericUpDownBrightness);
-            this.tabPage1.Controls.Add(this.trackBarBrightness);
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPage1.Controls.Add(this.buttonOn);
             this.tabPage1.Controls.Add(this.buttonRefreshStatus);
             this.tabPage1.Controls.Add(this.labelGreen);
@@ -881,35 +878,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lights";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(207, 168);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Strength";
-            // 
-            // numericUpDownBrightness
-            // 
-            this.numericUpDownBrightness.Location = new System.Drawing.Point(210, 145);
-            this.numericUpDownBrightness.Name = "numericUpDownBrightness";
-            this.numericUpDownBrightness.Size = new System.Drawing.Size(45, 22);
-            this.numericUpDownBrightness.TabIndex = 19;
-            this.numericUpDownBrightness.ValueChanged += new System.EventHandler(this.numericUpDownBrightness_ValueChanged);
-            // 
-            // trackBarBrightness
-            // 
-            this.trackBarBrightness.LargeChange = 1;
-            this.trackBarBrightness.Location = new System.Drawing.Point(210, 35);
-            this.trackBarBrightness.Maximum = 100;
-            this.trackBarBrightness.Name = "trackBarBrightness";
-            this.trackBarBrightness.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarBrightness.Size = new System.Drawing.Size(45, 104);
-            this.trackBarBrightness.TabIndex = 18;
-            this.trackBarBrightness.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarBrightness.ValueChanged += new System.EventHandler(this.trackBarBrightness_ValueChanged);
             // 
             // buttonOn
             // 
@@ -1022,7 +990,7 @@
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pictureBox1.Location = new System.Drawing.Point(6, 184);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(198, 50);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -1178,6 +1146,15 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 178);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Not Working (Yet)";
+            // 
             // Mainview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1229,8 +1206,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFunctionSpeed)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrightness)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.redBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).EndInit();
@@ -1331,13 +1306,11 @@
         private System.Windows.Forms.NumericUpDown numericUpDownconf;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelConfidence;
-        private System.Windows.Forms.NumericUpDown numericUpDownBrightness;
-        private System.Windows.Forms.TrackBar trackBarBrightness;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButtonCustomTheme;
         private System.Windows.Forms.RadioButton radioButtonDarkMode;
         private System.Windows.Forms.RadioButton radioButtonLightMode;
+        private System.Windows.Forms.Label label8;
     }
 }
 

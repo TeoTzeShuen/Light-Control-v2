@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
   <asmv1:assemblyIdentity name="WifiLedController.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
-  <description asmv2:iconFile="led-strip.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:iconFile="light-bulb.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
     <assemblyIdentity name="WifiLedController" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WifiLedController.exe" size="494016">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WifiLedController.exe" size="504256">
       <assemblyIdentity name="WifiLedController" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>7IcQHKpXh25lWGyKXonm0QTZ9F1NjxZWFcUdc8x5GIU=</dsig:DigestValue>
+        <dsig:DigestValue>8ZgvfcqZCI5MYjjlJ/pyz5sSBQY6kwQCF99Ox/AHMNA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,13 +63,22 @@
       <dsig:DigestValue>DkQblqwgqLbr9jmjpkrHwtCfmcWvTjHU2Ka9Dgtyyh8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="WifiLedController.exe.config" size="1719">
+  <file name="light-bulb.ico" size="113114">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>i9EdTXydqLGaEuJou4alK+/nWkWtO7mA46WS7Br+gNM=</dsig:DigestValue>
+      <dsig:DigestValue>ffo/LJE5lFShUAxXS8hbFvZC90mwosohXAn6tBvPTKo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="WifiLedController.exe.config" size="1726">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>cRKe/Rij73aVwZzvIV2FcjdN4DWSYYW/ldrLzhCz9Ro=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
