@@ -35,7 +35,12 @@
             this.buttonRefreshList = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.checkBoxTheme = new System.Windows.Forms.CheckBox();
             this.groupBoxThemes = new System.Windows.Forms.GroupBox();
+            this.groupBoxThemesEnabled = new System.Windows.Forms.GroupBox();
+            this.radioButtonThemeCustom = new System.Windows.Forms.RadioButton();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.radioButtonCustomTheme = new System.Windows.Forms.RadioButton();
             this.radioButtonDarkMode = new System.Windows.Forms.RadioButton();
@@ -89,19 +94,23 @@
             this.trackBarFunctionSpeed = new System.Windows.Forms.TrackBar();
             this.listBoxFunctions = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.numericUpDownWarmWhite = new System.Windows.Forms.NumericUpDown();
+            this.trackBarWarmWhite = new System.Windows.Forms.TrackBar();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.blueBar = new System.Windows.Forms.TrackBar();
+            this.numericUpDownBlue = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.greenBar = new System.Windows.Forms.TrackBar();
+            this.numericUpDownGreen = new System.Windows.Forms.NumericUpDown();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.redBar = new System.Windows.Forms.TrackBar();
+            this.numericUpDownRed = new System.Windows.Forms.NumericUpDown();
             this.buttonOn = new System.Windows.Forms.Button();
             this.buttonRefreshStatus = new System.Windows.Forms.Button();
             this.buttonOff = new System.Windows.Forms.Button();
             this.labelBlue = new System.Windows.Forms.Label();
-            this.redBar = new System.Windows.Forms.TrackBar();
-            this.numericUpDownBlue = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownWarmWhite = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.greenBar = new System.Windows.Forms.TrackBar();
-            this.numericUpDownGreen = new System.Windows.Forms.NumericUpDown();
-            this.trackBarWarmWhite = new System.Windows.Forms.TrackBar();
-            this.numericUpDownRed = new System.Windows.Forms.NumericUpDown();
-            this.blueBar = new System.Windows.Forms.TrackBar();
             this.tabControlDevice = new System.Windows.Forms.TabControl();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -111,22 +120,14 @@
             this.ambienceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItemAmbience = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.voiceControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.offToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBoxTheme = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.radioButtonThemeCustom = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBoxThemesEnabled = new System.Windows.Forms.GroupBox();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage4.SuspendLayout();
             this.groupBoxThemes.SuspendLayout();
+            this.groupBoxThemesEnabled.SuspendLayout();
             this.groupBoxVoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -147,22 +148,21 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFunctionSpeed)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.redBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).BeginInit();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWarmWhite)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.blueBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.greenBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarWarmWhite)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.redBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlDevice.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBoxThemesEnabled.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkedListBoxDevices
@@ -209,6 +209,17 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Settings";
             // 
+            // checkBoxTheme
+            // 
+            this.checkBoxTheme.AutoSize = true;
+            this.checkBoxTheme.Location = new System.Drawing.Point(138, 214);
+            this.checkBoxTheme.Name = "checkBoxTheme";
+            this.checkBoxTheme.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxTheme.TabIndex = 13;
+            this.checkBoxTheme.Text = "Themes (Beta)";
+            this.checkBoxTheme.UseVisualStyleBackColor = true;
+            this.checkBoxTheme.CheckedChanged += new System.EventHandler(this.checkBoxTheme_CheckedChanged);
+            // 
             // groupBoxThemes
             // 
             this.groupBoxThemes.Controls.Add(this.groupBoxThemesEnabled);
@@ -223,6 +234,47 @@
             this.groupBoxThemes.TabIndex = 12;
             this.groupBoxThemes.TabStop = false;
             this.groupBoxThemes.Text = "App Theme";
+            // 
+            // groupBoxThemesEnabled
+            // 
+            this.groupBoxThemesEnabled.Controls.Add(this.radioButtonThemeCustom);
+            this.groupBoxThemesEnabled.Controls.Add(this.button2);
+            this.groupBoxThemesEnabled.Controls.Add(this.button1);
+            this.groupBoxThemesEnabled.Enabled = false;
+            this.groupBoxThemesEnabled.Location = new System.Drawing.Point(1, 77);
+            this.groupBoxThemesEnabled.Name = "groupBoxThemesEnabled";
+            this.groupBoxThemesEnabled.Size = new System.Drawing.Size(116, 90);
+            this.groupBoxThemesEnabled.TabIndex = 7;
+            this.groupBoxThemesEnabled.TabStop = false;
+            // 
+            // radioButtonThemeCustom
+            // 
+            this.radioButtonThemeCustom.AutoSize = true;
+            this.radioButtonThemeCustom.Location = new System.Drawing.Point(6, 11);
+            this.radioButtonThemeCustom.Name = "radioButtonThemeCustom";
+            this.radioButtonThemeCustom.Size = new System.Drawing.Size(64, 17);
+            this.radioButtonThemeCustom.TabIndex = 4;
+            this.radioButtonThemeCustom.TabStop = true;
+            this.radioButtonThemeCustom.Text = "Custom";
+            this.radioButtonThemeCustom.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 59);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(92, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Back Colour";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Fore Colour";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -898,6 +950,158 @@
             this.tabPage1.Text = "Lights";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.numericUpDownWarmWhite);
+            this.groupBox6.Controls.Add(this.trackBarWarmWhite);
+            this.groupBox6.Location = new System.Drawing.Point(195, 35);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(57, 145);
+            this.groupBox6.TabIndex = 21;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "White";
+            // 
+            // numericUpDownWarmWhite
+            // 
+            this.numericUpDownWarmWhite.Location = new System.Drawing.Point(6, 117);
+            this.numericUpDownWarmWhite.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownWarmWhite.Name = "numericUpDownWarmWhite";
+            this.numericUpDownWarmWhite.Size = new System.Drawing.Size(45, 22);
+            this.numericUpDownWarmWhite.TabIndex = 15;
+            this.numericUpDownWarmWhite.ValueChanged += new System.EventHandler(this.numericUpDownWarmWhite_ValueChanged);
+            // 
+            // trackBarWarmWhite
+            // 
+            this.trackBarWarmWhite.BackColor = System.Drawing.SystemColors.Control;
+            this.trackBarWarmWhite.LargeChange = 20;
+            this.trackBarWarmWhite.Location = new System.Drawing.Point(6, 12);
+            this.trackBarWarmWhite.Maximum = 255;
+            this.trackBarWarmWhite.Name = "trackBarWarmWhite";
+            this.trackBarWarmWhite.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBarWarmWhite.Size = new System.Drawing.Size(45, 104);
+            this.trackBarWarmWhite.TabIndex = 14;
+            this.trackBarWarmWhite.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarWarmWhite.Scroll += new System.EventHandler(this.trackBarWarmWhite_Scroll);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.blueBar);
+            this.groupBox5.Controls.Add(this.numericUpDownBlue);
+            this.groupBox5.Location = new System.Drawing.Point(132, 35);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(57, 145);
+            this.groupBox5.TabIndex = 20;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Blue";
+            // 
+            // blueBar
+            // 
+            this.blueBar.BackColor = System.Drawing.SystemColors.Control;
+            this.blueBar.LargeChange = 20;
+            this.blueBar.Location = new System.Drawing.Point(6, 12);
+            this.blueBar.Maximum = 255;
+            this.blueBar.Name = "blueBar";
+            this.blueBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.blueBar.Size = new System.Drawing.Size(45, 104);
+            this.blueBar.TabIndex = 4;
+            this.blueBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.blueBar.Scroll += new System.EventHandler(this.blueBar_Scroll);
+            // 
+            // numericUpDownBlue
+            // 
+            this.numericUpDownBlue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.numericUpDownBlue.Location = new System.Drawing.Point(6, 117);
+            this.numericUpDownBlue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownBlue.Name = "numericUpDownBlue";
+            this.numericUpDownBlue.Size = new System.Drawing.Size(45, 22);
+            this.numericUpDownBlue.TabIndex = 7;
+            this.numericUpDownBlue.ValueChanged += new System.EventHandler(this.numericUpDownBlue_ValueChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.greenBar);
+            this.groupBox4.Controls.Add(this.numericUpDownGreen);
+            this.groupBox4.Location = new System.Drawing.Point(69, 35);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(57, 145);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Green";
+            // 
+            // greenBar
+            // 
+            this.greenBar.BackColor = System.Drawing.SystemColors.Control;
+            this.greenBar.LargeChange = 20;
+            this.greenBar.Location = new System.Drawing.Point(6, 12);
+            this.greenBar.Maximum = 255;
+            this.greenBar.Name = "greenBar";
+            this.greenBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.greenBar.Size = new System.Drawing.Size(45, 104);
+            this.greenBar.TabIndex = 3;
+            this.greenBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.greenBar.Scroll += new System.EventHandler(this.greenBar_Scroll);
+            // 
+            // numericUpDownGreen
+            // 
+            this.numericUpDownGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.numericUpDownGreen.Location = new System.Drawing.Point(6, 117);
+            this.numericUpDownGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownGreen.Name = "numericUpDownGreen";
+            this.numericUpDownGreen.Size = new System.Drawing.Size(45, 22);
+            this.numericUpDownGreen.TabIndex = 6;
+            this.numericUpDownGreen.ValueChanged += new System.EventHandler(this.numericUpDownGreen_ValueChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.redBar);
+            this.groupBox3.Controls.Add(this.numericUpDownRed);
+            this.groupBox3.Location = new System.Drawing.Point(6, 35);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(57, 145);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Red";
+            // 
+            // redBar
+            // 
+            this.redBar.BackColor = System.Drawing.SystemColors.Control;
+            this.redBar.LargeChange = 20;
+            this.redBar.Location = new System.Drawing.Point(6, 12);
+            this.redBar.Maximum = 255;
+            this.redBar.Name = "redBar";
+            this.redBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.redBar.Size = new System.Drawing.Size(45, 104);
+            this.redBar.TabIndex = 2;
+            this.redBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.redBar.Scroll += new System.EventHandler(this.redBar_Scroll);
+            // 
+            // numericUpDownRed
+            // 
+            this.numericUpDownRed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.numericUpDownRed.Location = new System.Drawing.Point(6, 117);
+            this.numericUpDownRed.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownRed.Name = "numericUpDownRed";
+            this.numericUpDownRed.Size = new System.Drawing.Size(45, 22);
+            this.numericUpDownRed.TabIndex = 5;
+            this.numericUpDownRed.ValueChanged += new System.EventHandler(this.numericUpDownRed_ValueChanged);
+            // 
             // buttonOn
             // 
             this.buttonOn.Location = new System.Drawing.Point(6, 6);
@@ -938,46 +1142,6 @@
             this.labelBlue.TabIndex = 10;
             this.labelBlue.Text = "Blue";
             // 
-            // redBar
-            // 
-            this.redBar.BackColor = System.Drawing.Color.White;
-            this.redBar.LargeChange = 20;
-            this.redBar.Location = new System.Drawing.Point(6, 12);
-            this.redBar.Maximum = 255;
-            this.redBar.Name = "redBar";
-            this.redBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.redBar.Size = new System.Drawing.Size(45, 104);
-            this.redBar.TabIndex = 2;
-            this.redBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.redBar.Scroll += new System.EventHandler(this.redBar_Scroll);
-            // 
-            // numericUpDownBlue
-            // 
-            this.numericUpDownBlue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.numericUpDownBlue.Location = new System.Drawing.Point(6, 117);
-            this.numericUpDownBlue.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDownBlue.Name = "numericUpDownBlue";
-            this.numericUpDownBlue.Size = new System.Drawing.Size(45, 22);
-            this.numericUpDownBlue.TabIndex = 7;
-            this.numericUpDownBlue.ValueChanged += new System.EventHandler(this.numericUpDownBlue_ValueChanged);
-            // 
-            // numericUpDownWarmWhite
-            // 
-            this.numericUpDownWarmWhite.Location = new System.Drawing.Point(6, 117);
-            this.numericUpDownWarmWhite.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDownWarmWhite.Name = "numericUpDownWarmWhite";
-            this.numericUpDownWarmWhite.Size = new System.Drawing.Size(45, 22);
-            this.numericUpDownWarmWhite.TabIndex = 15;
-            this.numericUpDownWarmWhite.ValueChanged += new System.EventHandler(this.numericUpDownWarmWhite_ValueChanged);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
@@ -987,73 +1151,6 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // greenBar
-            // 
-            this.greenBar.BackColor = System.Drawing.Color.White;
-            this.greenBar.LargeChange = 20;
-            this.greenBar.Location = new System.Drawing.Point(6, 12);
-            this.greenBar.Maximum = 255;
-            this.greenBar.Name = "greenBar";
-            this.greenBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.greenBar.Size = new System.Drawing.Size(45, 104);
-            this.greenBar.TabIndex = 3;
-            this.greenBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.greenBar.Scroll += new System.EventHandler(this.greenBar_Scroll);
-            // 
-            // numericUpDownGreen
-            // 
-            this.numericUpDownGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.numericUpDownGreen.Location = new System.Drawing.Point(6, 117);
-            this.numericUpDownGreen.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDownGreen.Name = "numericUpDownGreen";
-            this.numericUpDownGreen.Size = new System.Drawing.Size(45, 22);
-            this.numericUpDownGreen.TabIndex = 6;
-            this.numericUpDownGreen.ValueChanged += new System.EventHandler(this.numericUpDownGreen_ValueChanged);
-            // 
-            // trackBarWarmWhite
-            // 
-            this.trackBarWarmWhite.BackColor = System.Drawing.Color.White;
-            this.trackBarWarmWhite.LargeChange = 20;
-            this.trackBarWarmWhite.Location = new System.Drawing.Point(6, 12);
-            this.trackBarWarmWhite.Maximum = 255;
-            this.trackBarWarmWhite.Name = "trackBarWarmWhite";
-            this.trackBarWarmWhite.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarWarmWhite.Size = new System.Drawing.Size(45, 104);
-            this.trackBarWarmWhite.TabIndex = 14;
-            this.trackBarWarmWhite.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarWarmWhite.Scroll += new System.EventHandler(this.trackBarWarmWhite_Scroll);
-            // 
-            // numericUpDownRed
-            // 
-            this.numericUpDownRed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.numericUpDownRed.Location = new System.Drawing.Point(6, 117);
-            this.numericUpDownRed.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.numericUpDownRed.Name = "numericUpDownRed";
-            this.numericUpDownRed.Size = new System.Drawing.Size(45, 22);
-            this.numericUpDownRed.TabIndex = 5;
-            this.numericUpDownRed.ValueChanged += new System.EventHandler(this.numericUpDownRed_ValueChanged);
-            // 
-            // blueBar
-            // 
-            this.blueBar.BackColor = System.Drawing.Color.White;
-            this.blueBar.LargeChange = 20;
-            this.blueBar.Location = new System.Drawing.Point(6, 12);
-            this.blueBar.Maximum = 255;
-            this.blueBar.Name = "blueBar";
-            this.blueBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.blueBar.Size = new System.Drawing.Size(45, 104);
-            this.blueBar.TabIndex = 4;
-            this.blueBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.blueBar.Scroll += new System.EventHandler(this.blueBar_Scroll);
             // 
             // tabControlDevice
             // 
@@ -1135,13 +1232,6 @@
             this.offToolStripMenuItemAmbience.Text = "Off";
             this.offToolStripMenuItemAmbience.Click += new System.EventHandler(this.offToolStripMenuItemAmbience_Click);
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // voiceControlToolStripMenuItem
             // 
             this.voiceControlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1156,7 +1246,7 @@
             // 
             this.onToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("onToolStripMenuItem1.Image")));
             this.onToolStripMenuItem1.Name = "onToolStripMenuItem1";
-            this.onToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.onToolStripMenuItem1.Size = new System.Drawing.Size(91, 22);
             this.onToolStripMenuItem1.Text = "On";
             this.onToolStripMenuItem1.Click += new System.EventHandler(this.onToolStripMenuItem1_Click);
             // 
@@ -1164,106 +1254,16 @@
             // 
             this.offToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("offToolStripMenuItem1.Image")));
             this.offToolStripMenuItem1.Name = "offToolStripMenuItem1";
-            this.offToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.offToolStripMenuItem1.Size = new System.Drawing.Size(91, 22);
             this.offToolStripMenuItem1.Text = "Off";
             this.offToolStripMenuItem1.Click += new System.EventHandler(this.offToolStripMenuItem1_Click);
             // 
-            // checkBoxTheme
+            // exitToolStripMenuItem
             // 
-            this.checkBoxTheme.AutoSize = true;
-            this.checkBoxTheme.Location = new System.Drawing.Point(138, 214);
-            this.checkBoxTheme.Name = "checkBoxTheme";
-            this.checkBoxTheme.Size = new System.Drawing.Size(96, 17);
-            this.checkBoxTheme.TabIndex = 13;
-            this.checkBoxTheme.Text = "Themes (Beta)";
-            this.checkBoxTheme.UseVisualStyleBackColor = true;
-            this.checkBoxTheme.CheckedChanged += new System.EventHandler(this.checkBoxTheme_CheckedChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.redBar);
-            this.groupBox3.Controls.Add(this.numericUpDownRed);
-            this.groupBox3.Location = new System.Drawing.Point(6, 35);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(57, 145);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Red";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.greenBar);
-            this.groupBox4.Controls.Add(this.numericUpDownGreen);
-            this.groupBox4.Location = new System.Drawing.Point(69, 35);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(57, 145);
-            this.groupBox4.TabIndex = 19;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Green";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.blueBar);
-            this.groupBox5.Controls.Add(this.numericUpDownBlue);
-            this.groupBox5.Location = new System.Drawing.Point(132, 35);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(57, 145);
-            this.groupBox5.TabIndex = 20;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Blue";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.numericUpDownWarmWhite);
-            this.groupBox6.Controls.Add(this.trackBarWarmWhite);
-            this.groupBox6.Location = new System.Drawing.Point(195, 35);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(57, 145);
-            this.groupBox6.TabIndex = 21;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "White";
-            // 
-            // radioButtonThemeCustom
-            // 
-            this.radioButtonThemeCustom.AutoSize = true;
-            this.radioButtonThemeCustom.Location = new System.Drawing.Point(6, 11);
-            this.radioButtonThemeCustom.Name = "radioButtonThemeCustom";
-            this.radioButtonThemeCustom.Size = new System.Drawing.Size(64, 17);
-            this.radioButtonThemeCustom.TabIndex = 4;
-            this.radioButtonThemeCustom.TabStop = true;
-            this.radioButtonThemeCustom.Text = "Custom";
-            this.radioButtonThemeCustom.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Fore Colour";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 59);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Back Colour";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxThemesEnabled
-            // 
-            this.groupBoxThemesEnabled.Controls.Add(this.radioButtonThemeCustom);
-            this.groupBoxThemesEnabled.Controls.Add(this.button2);
-            this.groupBoxThemesEnabled.Controls.Add(this.button1);
-            this.groupBoxThemesEnabled.Enabled = false;
-            this.groupBoxThemesEnabled.Location = new System.Drawing.Point(1, 77);
-            this.groupBoxThemesEnabled.Name = "groupBoxThemesEnabled";
-            this.groupBoxThemesEnabled.Size = new System.Drawing.Size(116, 90);
-            this.groupBoxThemesEnabled.TabIndex = 7;
-            this.groupBoxThemesEnabled.TabStop = false;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Mainview
             // 
@@ -1289,6 +1289,8 @@
             this.tabPage4.PerformLayout();
             this.groupBoxThemes.ResumeLayout(false);
             this.groupBoxThemes.PerformLayout();
+            this.groupBoxThemesEnabled.ResumeLayout(false);
+            this.groupBoxThemesEnabled.PerformLayout();
             this.groupBoxVoice.ResumeLayout(false);
             this.groupBoxVoice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownconf)).EndInit();
@@ -1316,27 +1318,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFunctionSpeed)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.redBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.greenBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarWarmWhite)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueBar)).EndInit();
-            this.tabControlDevice.ResumeLayout(false);
-            this.contextMenuStrip.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBoxThemesEnabled.ResumeLayout(false);
-            this.groupBoxThemesEnabled.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarmWhite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWarmWhite)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.blueBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlue)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.greenBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGreen)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.redBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControlDevice.ResumeLayout(false);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
