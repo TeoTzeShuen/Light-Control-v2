@@ -21,4 +21,8 @@
     <MacAddress>C82E475FB14D</MacAddress>
     <Name>Table lights</Name>
   </CustomName>
+  <CustomName>
+    <MacAddress>10521CD0E100</MacAddress>
+    <Name>Room Lights</Name>
+  </CustomName>
 </Settings>

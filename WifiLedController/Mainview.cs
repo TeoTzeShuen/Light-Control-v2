@@ -16,6 +16,7 @@ namespace WifiLedController
     public partial class Mainview : Form
     {
         #region functions
+        #pragma warning disable
 
         private static int multicastPort = 48899;
         private UdpClient receive = new UdpClient(multicastPort);
@@ -1175,6 +1176,7 @@ namespace WifiLedController
                 "off lights", "lights off", "switch off lights",
                 "on ambience", "ambience on", "switch on ambience",
                 "off ambience", "ambience off","switch off ambience",
+                
                 "switch off audio control"
             });
                 
